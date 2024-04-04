@@ -2,7 +2,7 @@
 
 ### Description
 
-ScheduleSavvy is a comprehensive productivity platform designed to help users organize their tasks, manage their time effectively, and enhance their productivity. Built using the MERN (MongoDB, Express.js, React.js, Node.js) stack, ScheduleSavvy offers a wide range of features to streamline your workflow and elevate your efficiency.
+ScheduleSavvy is a comprehensive productivity platform designed to help users organize their tasks, manage their time effectively, and enhance their productivity. ScheduleSavvy offers a wide range of features to streamline your workflow and elevate your efficiency.
 
 ### Features
 
@@ -18,3 +18,4 @@ ScheduleSavvy is a comprehensive productivity platform designed to help users or
 ### Contact
 
 For any inquiries or feedback, please contact us at jeeveemonee@gmail.com.
+
