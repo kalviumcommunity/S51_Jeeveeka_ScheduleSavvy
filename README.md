@@ -19,3 +19,6 @@ ScheduleSavvy is a comprehensive productivity platform designed to help users or
 
 For any inquiries or feedback, please contact us at jeeveemonee@gmail.com.
 
+### Deployed Links
+
+https://schedulesavvy7.netlify.app
