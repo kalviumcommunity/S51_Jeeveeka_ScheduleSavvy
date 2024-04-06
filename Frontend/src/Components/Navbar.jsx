@@ -12,16 +12,7 @@ export default function Navbar() {
                 <ul className="nav-links">
                 <label htmlFor="close-btn" className="btn close-btn"><i className="fas fa-times"></i></label>
                 <li><a href="#">Calender</a></li>
-                <li>
-                    <a href="#" className="desktop-item">Myself</a>
-                    <input type="checkbox" id="showDrop"/>
-                    <label htmlFor="showDrop" className="mobile-item">Myself</label>
-                    <ul className="drop-menu">
-                        <li><a href="#">Plan my day</a></li>
-                        <li><a href="#">Notes</a></li>
-                        <li><a href="#">Tags</a></li>
-                    </ul>
-                </li>
+                <li><a href="#">Myself</a></li>
                 <li>
                     <a href="#" className="desktop-item">Features</a>
                     <input type="checkbox" id="showMega"/>
