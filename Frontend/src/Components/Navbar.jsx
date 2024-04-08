@@ -1,5 +1,6 @@
 import React from 'react'
 import '../Styles/Navbar.css'
+import image from '../assets/image1.jpg'
 
 export default function Navbar() {
   return (
@@ -20,24 +21,22 @@ export default function Navbar() {
                     <div className="mega-box">
                     <div className="content">
                         <div className="row">
-                        <img src="https://fadzrinmadu.github.io/hosted-assets/responsive-mega-menu-and-dropdown-menu-using-only-html-and-css/img.jpg" alt=""/>
+                        <img src={image} alt="planner_image"/>
                         </div>
                         <div className="row">
-                        <header>Email Services</header>
+                        <header>All-In-One Organizer</header>
                         <ul className="mega-links">
-                            <li><a href="#">Personal Email</a></li>
-                            <li><a href="#">Business Email</a></li>
-                            <li><a href="#">Mobile Email</a></li>
-                            <li><a href="#">Web Marketing</a></li>
+                            <li><a href="#">Social Media Dashboard</a></li>
+                            <li><a href="#">Timer</a></li>
+                            <li><a href="#">Challenges</a></li>
+                            <li><a href="#">Motivation</a></li>
                         </ul>
                         </div>
                         <div className="row">
-                        <header>Security services</header>
+                        <header>Creative Customization</header>
                         <ul className="mega-links">
-                            <li><a href="#">Site Seal</a></li>
-                            <li><a href="#">VPS Hosting</a></li>
-                            <li><a href="#">Privacy Seal</a></li>
-                            <li><a href="#">Website design</a></li>
+                            <li><a href="#">Themes</a></li>
+                            <li><a href="#">Music Library</a></li>
                         </ul>
                         </div>
                     </div>
@@ -53,7 +52,7 @@ export default function Navbar() {
                     <li><a href="#">Feedback</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="#">Profile</a></li>
                 </ul>
                 <label htmlFor="menu-btn" className="btn menu-btn"><i className="fas fa-bars"></i></label>
             </div>
