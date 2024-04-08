@@ -25,7 +25,7 @@ nav .wrapper{
   justify-content: space-between;
 }
 
-.wrapper .logo a{
+.wrapper .logo h6{
   color: #f2f2f2;
   font-size: 30px;
   font-weight: 600;
@@ -40,7 +40,7 @@ nav .wrapper{
   list-style: none;
 }
 
-.nav-links li a{
+.nav-links li h6{
   color: #f2f2f2;
   text-decoration: none;
   font-size: 18px;
@@ -50,8 +50,10 @@ nav .wrapper{
   transition: all 0.3s ease;
 }
 
-.nav-links li a:hover{
-  background: #3A3B3C;
+.nav-links li h6:hover{
+  background: #3a3b3cb1;
+  cursor: pointer;
+  height: 60px;
 }
 
 .nav-links .mobile-item{
@@ -77,7 +79,7 @@ nav .wrapper{
   visibility: visible;
 }
 
-.drop-menu li a{
+.drop-menu li h6{
   width: 100%;
   display: block;
   padding: 0 0 0 15px;
@@ -130,15 +132,14 @@ nav .wrapper{
   padding: 0 20px;
 }
 
-.row .mega-links li a{
-  padding: 0px;
-  padding: 0 20px;
+.row .mega-links li h6{
+  padding: 0px 20px;
   color: #d9d9d9;
   font-size: 17px;
   display: block;
 }
 
-.row .mega-links li a:hover{
+.row .mega-links li h6:hover{
   color: #f2f2f2;
 }
 
@@ -214,7 +215,7 @@ nav input{
     .nav-links li{
       margin: 15px 10px;
     }
-    .nav-links li a{
+    .nav-links li h6{
       padding: 0 20px;
       display: block;
       font-size: 20px;
@@ -254,7 +255,7 @@ nav input{
     .drop-menu li{
       margin: 0;
     }
-    .drop-menu li a{
+    .drop-menu li h6{
       border-radius: 5px;
       font-size: 18px;
     }
