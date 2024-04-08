@@ -10,7 +10,13 @@
   position: fixed;
   z-index: 99;
   width: 100%;
-  background: #242526;
+  background: rgb(201, 145, 1);
+}
+
+#logo_navbar{
+  height: 10vh;
+  margin-top: 5vh;
+  border-radius: 5%;
 }
 
 .navbar .navbar_wrapper{
@@ -51,7 +57,7 @@
 }
 
 .nav-links .navbar_li .navbar_headers:hover{
-  background: #3a3b3cb1;
+  background: rgba(218, 165, 32, 0.715);
   cursor: pointer;
   line-height: 60px;
 }
@@ -198,10 +204,10 @@
       width: 10px;
     }
     ::-webkit-scrollbar-track {
-      background: #242526;
+      background: goldenrod;
     }
     ::-webkit-scrollbar-thumb {
-      background: #3A3B3C;
+      background: goldenrod;
     }
     #menu-btn:checked ~ .nav-links{
       left: 0%;
@@ -250,7 +256,7 @@
       transition: all 0.3s ease;
     }
     .nav-links .mobile-item:hover{
-      background: #3A3B3C;
+      background: goldenrod;
     }
     .drop-menu .navbar_li{
       margin: 0;
