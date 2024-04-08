@@ -7,7 +7,8 @@ export default function AllRoutes() {
   return (
     <div>
         <Routes>
-            <Route path="/" element={<Signup/>}></Route>
+            <Route path='/' element={<Home/>}></Route>
+            <Route path="/signup" element={<Signup/>}></Route>
         </Routes>
     </div>
   )
