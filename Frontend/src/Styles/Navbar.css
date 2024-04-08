@@ -57,7 +57,7 @@
 }
 
 .nav-links .navbar_li .navbar_headers:hover{
-  background: #3a3b3cb1;
+  background: rgba(218, 165, 32, 0.715);
   cursor: pointer;
   line-height: 60px;
 }
