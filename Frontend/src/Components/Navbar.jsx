@@ -1,13 +1,14 @@
 import React from 'react'
 import '../Styles/Navbar.css'
 import image from '../assets/image1.jpg'
+import logo from '../assets/Logo.png'
 
 export default function Navbar() {
   return (
     <>
         <nav className='navbar'>
             <div className="navbar_wrapper">
-                <div className="navbar_logo"><h6>Logo</h6></div>
+                <div className="navbar_logo"><img id='logo_navbar' src={logo} alt="logo" /></div>
                 <input className='navbar_input' type="radio" name="slider" id="menu-btn"/>
                 <input className='navbar_input' type="radio" name="slider" id="close-btn"/>
                 <ul className="nav-links">
