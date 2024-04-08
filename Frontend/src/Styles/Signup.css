@@ -1,18 +1,16 @@
-body{
+.mainpage{
     margin: 0px;
     padding: 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: 'Jost',sans-serif;
     background: linear-gradient(to bottom, #0f0c29,#302b63,#24243e);
 }
 
 .main{
     width: 350px;
     height: 500px;
-    background: red;
     overflow: hidden;
     background: url("../assets/signup_bg.jpeg") no-repeat ;
     border-radius: 10px;
@@ -29,7 +27,7 @@ body{
     height: 100%;
 }
 
-label{
+.signup_label{
     color: white;
     font-size: 2.3em;
     justify-content: center;
@@ -40,7 +38,7 @@ label{
     transition: 0.5s ease-in-out;
 }
 
-input{
+.signup_input{
     width: 60%;
     height: 20px;
     background: #e0dede;
@@ -53,7 +51,7 @@ input{
     border-radius: 5px;
 }
 
-button{
+.signup_button{
     width: 60%;
     height: 40px;
     margin: 10px auto;
@@ -71,7 +69,7 @@ button{
     cursor: pointer;
 }
 
-button:hover{
+.signup_button:hover{
     background: #6d44b8;
 }
 
@@ -83,7 +81,7 @@ button:hover{
     transition: 0.8s ease-in-out;
 }
 
-.login label{
+.login .signup_label{
     color: #573b8a;
     transform: scale(0.6);
 }
@@ -92,11 +90,11 @@ button:hover{
     transform: translateY(-500px);
 }
 
-#chk:checked ~ .login label{
+#chk:checked ~ .login .signup_label{
     transform: scale(1);
 }
 
-#chk:checked ~ .signup label{
+#chk:checked ~ .signup .signup_label{
     transform: scale(0.6);
 }
 
