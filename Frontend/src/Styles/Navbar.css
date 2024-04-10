@@ -68,13 +68,13 @@
 
 .nav-links .drop-menu{
   position: absolute;
-  background: #242526;
+  background: rgb(35, 0, 0);
   width: 180px;
   line-height: 45px;
   top: 85px;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 10px goldenrod;
 }
 
 .nav-links .navbar_li:hover .drop-menu,
@@ -104,12 +104,12 @@
 }
 
 .mega-box .content{
-  background: #242526;
+  background: rgb(35, 0, 0);
   padding: 25px 20px;
   display: flex;
   width: 100%;
   justify-content: space-between;
-  box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 10px goldenrod;
 }
 
 .mega-box .content .row{
