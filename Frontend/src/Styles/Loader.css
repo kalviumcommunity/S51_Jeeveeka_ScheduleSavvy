@@ -1,0 +1,123 @@
+#loader_container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: goldenrod;
+}
+
+.loading{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 240px;
+	animation-name: loading-rotate;
+}
+
+@keyframes loading-rotate{
+	0%, 100%{
+		transform: translate(-50%,-50%) rotate(0deg);
+	}
+	50%{
+		transform: translate(-50%,-50%) rotate(90deg);
+	}
+}
+
+.loading:before{
+	content: "";
+	position: absolute;
+	width: 120px;
+	height: 120px;
+	background: goldenrod;
+	top: 50%;
+	left: 50%;
+	z-index: 1;
+	transform: translate(-50%,-50%);
+	animation-name: loading-rev;
+}
+
+@keyframes loading-rev{
+	0%{
+		transform: translate(-50%,-50%) rotate(0deg);
+	}
+	50%{
+		transform: translate(-50%,-50%) rotate(90deg);
+	}
+	52%{
+		visibility: hidden;
+	}
+	100%{
+		transform: translate(-50%,-50%) rotate(0deg);
+		visibility: hidden;
+	}
+}
+
+.circle{
+	position: relative;
+	background: white;
+	width: 100px;
+	height: 100px;
+	border-radius: 100%;
+	margin: 10px;
+	float: right;
+	animation-name: circe-rotate;
+}
+
+@keyframes circle-rotate{
+	0%,50%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(-360deg);
+	}
+}
+
+.circle:before{
+	content: "";
+	position: absolute;
+	background: goldenrod;
+	width: 50px;
+	height: 50px;
+	animation-name: circle-box;
+}
+
+@keyframes circle-box{
+	0%,50%{
+		visibility: hidden;
+	}
+	100%{
+		visibility: visible;
+	}
+}
+
+.circle:nth-child(1)::before{
+	left: 0px;
+	bottom: 0px;
+	border-bottom-left-radius: 40px;
+}
+
+.circle:nth-child(2)::before{
+	right: 0px;
+	bottom: 0px;
+	border-bottom-right-radius: 40px;
+}
+
+.circle:nth-child(3)::before{
+	top: 0px;
+	left: 0px;
+	border-top-left-radius: 40px;
+}
+
+.circle:nth-child(4)::before{
+	top: 0px;
+	right: 0px;
+	border-top-right-radius: 40px;
+}
+
+.loading, .loading:before, .circle, .circle:before{
+	animation-duration: 4s;
+	animation-iteration-count: infinite;
+	animation-timing-function: cubic-bezier(0.82,0.01,0.15,1.01);
+}
