@@ -8,7 +8,7 @@ export default function Home() {
   useEffect(() => {
       const timeout = setTimeout(() => {
           setIsLoading(false);
-      }, 4000); 
+      }, 3000); 
       return () => clearTimeout(timeout);
   }, []); 
 
