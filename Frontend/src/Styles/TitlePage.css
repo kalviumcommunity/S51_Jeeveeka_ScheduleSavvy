@@ -109,3 +109,121 @@
   left: 70%;
   background: linear-gradient(130deg, purple, palevioletred);
 }
+
+#title1 {
+  display: flex;
+  align-items: center; 
+  background: url('../assets/background_gradient.gif') no-repeat ;
+  background-size: cover; 
+  padding: 20px; 
+}
+
+#highlight {
+  color: goldenrod;
+}
+
+#planner_gif {
+  width: 50%; 
+  height: auto; 
+  object-fit: cover; 
+}
+
+#title_innerdiv1 {
+  width: 50%; 
+  margin-left: 15vw; 
+  color: white;
+}
+
+#title_button {
+  margin-top: 10px; 
+  padding: 10px 20px; 
+  background-color: white; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
+}
+
+#title2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  align-items: center; 
+}
+
+#title2 #tp_subtitle {
+  grid-column: span 3;
+  text-align: center;  
+}
+
+#title2 .tp_images {
+  width: 25vw; 
+  height: 60vh; 
+  padding: 3vh;
+}
+
+#title2 .tp_content {
+  margin-left: 2vw;
+  text-align: left; 
+}
+
+.tp_box{
+  padding: 7vh;
+}
+
+#title3 {
+  display: flex;
+  align-items: center; 
+  background: url('../assets/background_gradient.gif') no-repeat ;
+  background-size: cover; 
+  padding: 20px; 
+}
+
+#template4 {
+  width: 50%; 
+  height: 50vh;  
+}
+
+#title_innerdiv2 {
+  width: 50%; 
+  margin-left: 5vw; 
+  color: white;
+}
+
+
+.heading {
+  text-align: left;
+  margin-left: 2vw;
+  margin-bottom: 2vh;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: gray;
+}
+
+.title {
+  font-size: 2rem;
+  margin-top: 5px;
+}
+
+.testimonial {
+  display: flex;
+  align-items: flex-start;
+  gap: 2vw;
+  padding: 3vw;
+}
+
+.testimonial-image {
+  width: 10vw;
+  height: auto;
+  border-radius: 50%; 
+}
+
+.testimonial-content {
+  max-width: calc(100% - 120px); 
+  text-align: left; 
+}
+
+.testimonial-author {
+  font-style: italic; 
+  color: gray; 
+}
