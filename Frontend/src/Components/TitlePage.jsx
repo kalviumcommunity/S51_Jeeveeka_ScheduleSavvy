@@ -1,11 +1,21 @@
 import React from 'react'
+import TitleNav from './TitleNav'
+import '../Styles/Tailwind.css'
+import Banner from './Banner'
+import TitleFeatures from './TitleFeatures'
+import TitleAbout from './TitleAbout'
+import Footer from './Footer'
 
 export default function TitlePage() {
   return (
-    <div>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-    </div>
+    <>
+      <TitleNav/>
+      <div className='md:px-12 p-4 max-w-screen-2xl mx-auto mt-10'>
+        <Banner/>
+      </div>
+      <TitleFeatures/>
+      <TitleAbout/>
+      <Footer/>
+    </>
   )
 }

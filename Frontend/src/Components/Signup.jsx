@@ -9,7 +9,10 @@ const Signup = () => {
 
   return (
     <div id='signup_container'>
-        <div className={`container ${isSignUpMode ? 'sign-up-mode' : ''} ${isSignUpMode2 ? 'sign-up-mode2' : ''}`}>
+        <div className="close-button">
+            &times;
+        </div>
+        <div className={`login_container ${isSignUpMode ? 'sign-up-mode' : ''} ${isSignUpMode2 ? 'sign-up-mode2' : ''}`}>
         <div className="signin-signup">
             <form className="sign-in-form">
             <h2 className="title">Sign in</h2>
@@ -52,7 +55,7 @@ const Signup = () => {
                 <input className='signup_input' type="text" placeholder="Email" />
             </div>
             <div className="input-field">
-                <i class="fas fa-lock" />
+                <i className="fas fa-lock" />
                 <input className='signup_input' type="password" placeholder="Password" />
             </div>
             <input type="submit" value="Sign up" className="btn" />
@@ -76,7 +79,7 @@ const Signup = () => {
 
         <div className="panels-container">
             <div className="panel left-panel">
-            <div className="content">
+            <div className="signup_content">
                 <h3 className='signup_title'>Part of Schedule Savvy?</h3>
                 <p className='account_text'>Welcome back! Sign in to take charge of your day.</p>
                 <button className="btn" onClick={() => setIsSignUpMode(false)} id="sign-in-btn">Sign in</button>
@@ -84,7 +87,7 @@ const Signup = () => {
             <img src={signinSvg} alt="Sign in" className="image" />
             </div>
             <div className="panel right-panel">
-            <div className="content">
+            <div className="signup_content">
                 <h3 className='signup_title'>New to Schedule Savvy?</h3>
                 <p className='account_text'>Join us today! Discover seamless scheduling and productivity.</p>
                 <button className="btn" onClick={() => setIsSignUpMode(true)} id="sign-up-btn">Sign up</button>
