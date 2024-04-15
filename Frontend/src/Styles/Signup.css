@@ -1,3 +1,16 @@
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 80px;
+    font-size: 50px;
+    color: #ff5ef2;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: purple;
+}
+
 #signup_container {
     display: flex;
     align-items: center;
@@ -8,9 +21,8 @@
         #EE9AE5, 
         #5961F9 
     );
-    
 }
-.container {
+.login_container {
     position: relative;
     width: 70vw;
     height: 80vh;
@@ -19,7 +31,7 @@
     box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3);
     overflow: hidden;
 }
-.container::before {
+.login_container::before {
     content: "";
     position: absolute;
     top: 0;
@@ -162,7 +174,7 @@
 .left-panel {
     pointer-events: none;
 }
-.content {
+.signup_content {
     color: #fff;
     transition: 1.1s ease-in-out;
     transition-delay: 0.5s;
@@ -181,11 +193,11 @@
     transition-delay: 0.4s;
 }
 .left-panel .image,
-.left-panel .content {
+.left-panel .signup_content {
     transform: translateX(-200%);
 }
 .right-panel .image,
-.right-panel .content {
+.right-panel .signup_content {
     transform: translateX(0);
 }
 .account-text {
@@ -194,38 +206,38 @@
     padding: 10px 0;
 }
 
-.container.sign-up-mode::before {
+.login_container.sign-up-mode::before {
     transform: translateX(0);
 }
-.container.sign-up-mode .right-panel .image,
-.container.sign-up-mode .right-panel .content {
+.login_container.sign-up-mode .right-panel .image,
+.login_container.sign-up-mode .right-panel .signup_content {
     transform: translateX(200%);
 }
-.container.sign-up-mode .left-panel .image,
-.container.sign-up-mode .left-panel .content {
+.login_container.sign-up-mode .left-panel .image,
+.login_container.sign-up-mode .left-panel .signup_content {
     transform: translateX(0);
 }
-.container.sign-up-mode form.sign-in-form {
+.login_container.sign-up-mode form.sign-in-form {
     opacity: 0;
 }
-.container.sign-up-mode form.sign-up-form {
+.login_container.sign-up-mode form.sign-up-form {
     opacity: 1;
 }
-.container.sign-up-mode .right-panel {
+.login_container.sign-up-mode .right-panel {
     pointer-events: none;
 }
-.container.sign-up-mode .left-panel {
+.login_container.sign-up-mode .left-panel {
     pointer-events: all;
 }
 
 @media (max-width:779px) {
-    .container {
+    .login_container {
         width: 95vw;
         height: 99vh;
     }
 }
 @media (max-width:635px) {
-    .container::before {
+    .login_container::before {
         display: none;
     }
     form {
@@ -234,11 +246,11 @@
     form.sign-up-form {
         display: none;
     }
-    .container.sign-up-mode2 form.sign-up-form {
+    .login_container.sign-up-mode2 form.sign-up-form {
         display: flex;
         opacity: 1;
     }
-    .container.sign-up-mode2 form.sign-in-form {
+    .login_container.sign-up-mode2 form.sign-in-form {
         display: none;
     }
     .panels-container {
