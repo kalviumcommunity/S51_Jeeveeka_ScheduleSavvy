@@ -7,8 +7,9 @@ export default function TitleFeatures() {
         <div className='flex flex-col lg:flex-row justify-between items-start gap-10'>
           <div className='lg:w-1/4'>
             <h3 className='text-4xl  text-primary font-bold lg:w-1/2 mb-3 '>Few Unique Features</h3>
-            <p className='text-base text-tertiary'>Te Ofrecemos la mejor logistica para planear de forma mas eficiente el modo en que serán transportados y almacenados los bienes que necesita trasladar en el mejor plazo posible y con seguridad que nosotros brindamos</p>
+            <p className='text-base text-tertiary'>We provide personalized scheduling, social media tracking, customisable themes and a lot more for an optimized, productive day.</p>
           </div>
+          
           {/* feature cards */}
           <div className='w-full lg:w-3/4'>
             <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 items-start md:gap-12 gap-8'>
