@@ -11,7 +11,7 @@ function Footer() {
 
                 <div className="footer-section">
                     <h3 className='footer_titles' >Contact</h3>
-                    <p>123 Main St, City, Country</p>
+                    <p>123 Main St, Chennai, India</p>
                     <p>Email: jeeveekawork@gmail.com</p>
                     <p>Phone: +91 9498407843</p>
                 </div>

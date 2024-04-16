@@ -12,10 +12,10 @@ export default function TitleAbout() {
                 </div>
                 <div className='md:w-2/5'>
                     <h2 className='md:text-4xl text-2xl font-bold text-primary mb-5 leading-normal'>
-                        Comprometidos con la efectividad de los <span className='text-secondary'>procesos nuestra mision.</span>
+                        Ease in planning your day: <span className='text-secondary'>Our Mission</span>
                     </h2>
                     <p className='text-tertiary text-lg mb-7'>
-                        Ofrecer servicios de transporte de carga a través de unidades modernas y equipadas con tecnología de punta,a logística de distribución.
+                    Our mission is to empower you with tools for efficient task planning and management. We aim to help you prioritize and track your tasks seamlessly, optimizing your productivity.
                     </p>
                     <button className='btnPrimary'>Let's Go</button>
                 </div>
@@ -27,10 +27,10 @@ export default function TitleAbout() {
                 </div>
                 <div className='md:w-2/5 '>
                     <h2 className='md:text-4xl text-2xl font-bold text-primary mb-5 leading-normal'>
-                    Ser un aliado <span className='text-secondary'> estrategico nuestra vision</span>
+                    Your Social Media Hub:<span className='text-secondary'>  Our Vision </span>
                     </h2>
                     <p className='text-tertiary text-lg mb-7'>
-                        Ofrecer servicios de transporte de carga a través de unidades modernas y equipadas con tecnología de punta,a logística de distribución.
+                    Our vision is to empower your online presence with an intuitive dashboard that offers advanced analytics, seamless scheduling, and real-time insights across platforms.
                     </p>
                     <button className='btnPrimary'>Let's Go</button>
                 </div>
