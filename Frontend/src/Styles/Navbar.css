@@ -11,7 +11,7 @@
   position: fixed;
   z-index: 99;
   width: 100%;
-  background: rgb(201, 145, 1);
+  background: #9A7AF1;
 }
 
 #logo_navbar{
@@ -58,7 +58,7 @@
 }
 
 .nav-links .navbar_li .navbar_headers:hover{
-  background: rgba(218, 165, 32, 0.715);
+  background: #EE9AE5;
   cursor: pointer;
   line-height: 60px;
 }
@@ -67,7 +67,7 @@
   display: none;
 }
 
-.nav-links .drop-menu{
+.nav-links .navbar_dropmenu{
   position: absolute;
   background: rgb(35, 0, 0);
   width: 180px;
@@ -75,10 +75,10 @@
   top: 85px;
   opacity: 0;
   visibility: hidden;
-  box-shadow: 0 6px 10px goldenrod;
+  box-shadow: 0 6px 10px #EE9AE5;
 }
 
-.nav-links .navbar_li:hover .drop-menu,
+.nav-links .navbar_li:hover .navbar_dropmenu,
 .nav-links .navbar_li:hover .mega-box{
   transition: all 0.3s ease;
   top: 70px;
@@ -86,7 +86,7 @@
   visibility: visible;
 }
 
-.drop-menu .navbar_li .navbar_headers{
+.navbar_dropmenu .navbar_li .navbar_headers{
   width: 100%;
   display: block;
   padding: 0 0 0 15px;
@@ -104,33 +104,33 @@
   visibility: hidden;
 }
 
-.mega-box .content{
+.mega-box .navbar_content{
   background: rgb(35, 0, 0);
   padding: 25px 20px;
   display: flex;
   width: 100%;
   justify-content: space-between;
-  box-shadow: 0 6px 10px goldenrod;
+  box-shadow: 0 6px 10px #EE9AE5;
 }
 
-.mega-box .content .row{
+.mega-box .navbar_content .row{
   width: calc(25% - 30px);
   line-height: 45px;
 }
 
-.content .row #navbar_planner_image{
+.navbar_content .row #navbar_planner_image{
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.content .row .nav_header{
+.navbar_content .row .nav_header{
   color: #f2f2f2;
   font-size: 20px;
   font-weight: 500;
 }
 
-.content .row .mega-links{
+.navbar_content .row .mega-links{
   margin-left: -40px;
   border-left: 1px solid rgba(255,255,255,0.09);
 }
@@ -150,14 +150,14 @@
   color: #f2f2f2;
 }
 
-.navbar_wrapper .btn{
+.navbar_wrapper .navbar_btn{
   color: #fff;
   font-size: 20px;
   cursor: pointer;
   display: none;
 }
 
-.navbar_wrapper .btn.close-btn{
+.navbar_wrapper .navbar_btn.navbar_close-btn{
   position: absolute;
   right: 30px;
   top: 10px;
@@ -182,7 +182,7 @@
 }
 
 @media screen and (max-width: 768px) {
-    .navbar_wrapper .btn{
+    .navbar_wrapper .navbar_btn{
       display: block;
     }
     .navbar_wrapper .nav-links{
@@ -197,7 +197,7 @@
       padding: 50px 10px;
       line-height: 50px;
       overflow-y: auto;
-      box-shadow: 0px 15px 15px rgba(0,0,0,0.18);
+      box-shadow: 0px 15px 15px #EE9AE5;
       transition: all 0.3s ease;
     }
   
@@ -205,18 +205,18 @@
       width: 10px;
     }
     ::-webkit-scrollbar-track {
-      background: goldenrod;
+      background: #EE9AE5;
     }
     ::-webkit-scrollbar-thumb {
-      background: goldenrod;
+      background: #EE9AE5;
     }
     #menu-btn:checked ~ .nav-links{
       left: 0%;
     }
-    #menu-btn:checked ~ .btn.menu-btn{
+    #menu-btn:checked ~ .navbar_btn.navbar_menu-btn{
       display: none;
     }
-    #close-btn:checked ~ .btn.menu-btn{
+    #close-btn:checked ~ .navbar_btn.navbar_menu-btn{
       display: block;
     }
     .nav-links .navbar_li{
@@ -227,7 +227,7 @@
       display: block;
       font-size: 20px;
     }
-    .nav-links .drop-menu{
+    .nav-links .navbar_dropmenu{
       position: static;
       opacity: 1;
       top: 65px;
@@ -239,7 +239,7 @@
       box-shadow: none;
       transition: all 0.3s ease;
     }
-    #showDrop:checked ~ .drop-menu,
+    #showDrop:checked ~ .navbar_dropmenu,
     #showMega:checked ~ .mega-box{
       max-height: 100%;
     }
@@ -257,12 +257,12 @@
       transition: all 0.3s ease;
     }
     .nav-links .mobile-item:hover{
-      background: goldenrod;
+      background: #EE9AE5;
     }
-    .drop-menu .navbar_li{
+    .navbar_dropmenu .navbar_li{
       margin: 0;
     }
-    .drop-menu .navbar_li .navbar_headers{
+    .navbar_dropmenu .navbar_li .navbar_headers{
       border-radius: 5px;
       font-size: 18px;
     }
@@ -276,28 +276,28 @@
       overflow: hidden;
       transition: all 0.3s ease;
     }
-    .mega-box .content{
+    .mega-box .navbar_content{
       box-shadow: none;
       flex-direction: column;
       padding: 20px 20px 0 20px;
     }
-    .mega-box .content .row{
+    .mega-box .navbar_content .row{
       width: 100%;
       margin-bottom: 15px;
       border-top: 1px solid rgba(255,255,255,0.08);
     }
-    .mega-box .content .row:nth-child(1),
-    .mega-box .content .row:nth-child(2){
+    .mega-box .navbar_content .row:nth-child(1),
+    .mega-box .navbar_content .row:nth-child(2){
       border-top: 0px;
     }
-    .content .row .mega-links{
+    .navbar_content .row .mega-links{
       border-left: 0px;
       padding-left: 15px;
     }
     .row .mega-links .navbar_li{
       margin: 0;
     }
-    .content .row .nav_header{
+    .navbar_content .row .nav_header{
       font-size: 19px;
     }
     #navbar_res{

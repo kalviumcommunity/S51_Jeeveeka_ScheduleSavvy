@@ -5,7 +5,8 @@ export default {
     './src/Components/TitleNav.jsx',
     './src/Components/Banner.jsx',
     './src/Components/TitleAbout.jsx',
-    './src/Components/TitleFeatures.jsx'
+    './src/Components/TitleFeatures.jsx',
+    './src/Components/ForgetPassword.jsx'
   ],
   theme: {
     extend: {
