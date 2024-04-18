@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import '../Styles/Signup.css';
 import signinSvg from '../assets/signin.svg';
 import signupSvg from '../assets/signup.svg';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../Firebase/Firebase.config';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const Signup = () => {
     const [isSignUpMode, setIsSignUpMode] = useState(false);
@@ -25,9 +26,8 @@ const Signup = () => {
             // Send email verification
             await sendEmailVerification(user);
             toast.info('Verification email sent. Please check your inbox.');
-
             // Redirect to login page
-            navigate("/home");
+            window.reload()
         } catch (error) {
             // Handle signup errors
             console.error('Error during signup:', error);
@@ -51,6 +51,31 @@ const Signup = () => {
         }
     };
 
+    const googleAuth =()=>{
+        const provider = new GoogleAuthProvider();
+        try {
+          const result = signInWithPopup(auth, provider);
+          console.log(result);
+          const isNewUser = result.additionalUserInfo?.isNewUser;
+          if (isNewUser) {
+            toast.success('Thank you for signing up! A verification email has been sent.');
+            sendEmailVerification(result.user);
+          } else {
+            toast.success('Welcome to Schedule Savvy !');
+          }
+        } catch (error) {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+      
+          if (errorCode === 'auth/email-already-in-use') {
+            toast.error('The email address is already in use by another account.');
+          } else {
+            toast.error(errorMessage);
+          }
+          console.error(error);
+        }
+    }
+
     return (
         <div id='signup_container'>
             <div className={`login_container ${isSignUpMode ? 'sign-up-mode' : ''}`}>
@@ -65,12 +90,12 @@ const Signup = () => {
                             <i className="fas fa-lock" />
                             <input className='signup_input' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         </div>
-                        <p id='forget_pswd'>Forgot password?</p>
+                        <Link to="/forgetPassword"><p id='forget_pswd'>Forgot password?</p></Link>
                         <input type="submit" value="Login" className="btn" />
                         <p className="social-text">Or Sign in with social platform</p>
                         {/* Social media sign-in buttons */}
                         <div className="social-media">
-                            <a href="#" className="social-icon">
+                            <a onClick={googleAuth} href="#" className="social-icon">
                                 <i className="fab fa-google" />
                             </a>
                             <a href="#" className="social-icon">
@@ -100,7 +125,7 @@ const Signup = () => {
                         <p className="social-text">Or Sign in with social platform</p>
                         {/* Social media sign-up buttons */}
                         <div className="social-media">
-                            <a href="#" className="social-icon">
+                            <a onClick={googleAuth} href="#" className="social-icon">
                                 <i className="fab fa-google" />
                             </a>
                             <a href="#" className="social-icon">

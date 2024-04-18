@@ -12,7 +12,7 @@ export default function Navbar() {
                 <input className='navbar_input' type="radio" name="slider" id="menu-btn"/>
                 <input className='navbar_input' type="radio" name="slider" id="close-btn"/>
                 <ul className="nav-links">
-                <label htmlFor="close-btn" className="btn close-btn"><i className="fas fa-times"></i></label>
+                <label htmlFor="close-btn" className="navbar_btn navbar_close-btn"><i className="fas fa-times"></i></label>
                 <li className='navbar_li'><h6 className='navbar_headers'>Calender</h6></li>
                 <li className='navbar_li'><h6 className='navbar_headers'>Myself</h6></li>
                 <li className='navbar_li'>
@@ -20,7 +20,7 @@ export default function Navbar() {
                     <input className='navbar_input' type="checkbox" id="showMega"/>
                     <label htmlFor="showMega" className="mobile-item">Features</label>
                     <div className="mega-box">
-                    <div className="content">
+                    <div className="navbar_content">
                         <div className="row">
                         <img id='navbar_planner_image' src={image} alt="planner_image"/>
                         </div>
@@ -47,7 +47,7 @@ export default function Navbar() {
                     <h6 id='navbar_res' className='navbar_headers'>More Info</h6>
                     <input className='navbar_input' type="checkbox" id="showDrop"/>
                     <label htmlFor="showDrop" className="mobile-item">More Info</label>
-                    <ul className="drop-menu">
+                    <ul className="navbar_dropmenu">
                     <li className='navbar_li'><h6 className='navbar_headers'>About Us</h6></li>
                     <li className='navbar_li'><h6 className='navbar_headers'>Contact Us</h6></li>
                     <li className='navbar_li'><h6 className='navbar_headers'>Feedback</h6></li>
@@ -55,7 +55,7 @@ export default function Navbar() {
                 </li>
                 <li className='navbar_li'><h6 className='navbar_headers'>Profile</h6></li>
                 </ul>
-                <label htmlFor="menu-btn" className="btn menu-btn"><i className="fas fa-bars"></i></label>
+                <label htmlFor="menu-btn" className="navbar_btn navbar_menu-btn"><i className="fas fa-bars"></i></label>
             </div>
         </nav>
     </>
