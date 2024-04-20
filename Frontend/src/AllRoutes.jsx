@@ -5,6 +5,7 @@ import Signup from './Components/Signup'
 import TitlePage from './Components/TitlePage'
 import Layout from './Components/Layout'
 import ForgetPassword from './Components/ForgetPassword'
+import Feedback from './Components/Feedback'
 
 export default function AllRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function AllRoutes() {
             <Route path='/signup' element={<Layout><Signup/></Layout>}></Route>
             <Route path='/home' element={<Home/>}></Route>
             <Route path='/forgetPassword' element={<ForgetPassword/>}></Route>
+            <Route path='/feedback' element={<Feedback/>}></Route>            
         </Routes>
     </div>
   )

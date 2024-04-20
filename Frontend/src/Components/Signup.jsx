@@ -99,7 +99,7 @@ const Signup = () => {
                                 <i className="fab fa-google" />
                             </a>
                             <a href="#" className="social-icon">
-                                <i className="fab fa-linkedin-in" />
+                                <i className="fab fa-github" />
                             </a>
                         </div>
                         <p className="account-text">
@@ -129,7 +129,7 @@ const Signup = () => {
                                 <i className="fab fa-google" />
                             </a>
                             <a href="#" className="social-icon">
-                                <i className="fab fa-linkedin-in" />
+                                <i className="fab fa-github" />
                             </a>
                         </div>
                         <p className="account-text">
