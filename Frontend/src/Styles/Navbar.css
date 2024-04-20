@@ -15,9 +15,9 @@
 }
 
 #logo_navbar{
-  height: 10vh;
-  margin-top: 5vh;
-  border-radius: 5%;
+  height: 8vh;
+  border-radius: 25%;
+  background-color: white;
 }
 
 .navbar .navbar_wrapper{
