@@ -14,7 +14,6 @@ export default function Banner() {
               <p className='text-[#EBEBEB] text-1xl mb-8'>Streamline your day with smart scheduling and productivity!</p>
               <div className='space-x-5 space-y-4'>
                 <button className='btnPrimary'>Learn More</button>
-                <button className='btnPrimary'>Discover More</button>
               </div> 
             </div>
         </div>
