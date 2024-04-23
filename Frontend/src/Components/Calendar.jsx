@@ -10,6 +10,10 @@ const Calendar = () => {
     year: today.getFullYear(),
     eventsArr: [],
     days: [],
+    showEventForm: false,
+    eventTitle: '',
+    startTime: '',
+    endTime: ''
   };
 
   const reducer = (state, action) => {
@@ -24,13 +28,25 @@ const Calendar = () => {
         return { ...state, eventsArr: action.payload };
       case 'SET_DAYS':
         return { ...state, days: action.payload };
+      case 'OPEN_EVENT_FORM':
+        return { ...state, showEventForm: true };
+      case 'CLOSE_EVENT_FORM':
+        return { ...state, showEventForm: false };
+      case 'SET_EVENT_TITLE':
+        return { ...state, eventTitle: action.payload };
+      case 'SET_START_TIME':
+        return { ...state, startTime: action.payload };
+      case 'SET_END_TIME':
+        return { ...state, endTime: action.payload };
       default:
         return state;
     }
   };
 
+
   const [state, dispatch] = useReducer(reducer, initialState);
   const { activeDay, month, year, eventsArr, days } = state;
+  const { showEventForm, eventTitle, startTime, endTime } = state;
 
   useEffect(() => {
     initCalendar();
@@ -138,13 +154,59 @@ const Calendar = () => {
     dispatch({ type: 'SET_ACTIVE_DAY', payload: dayName });
   };
    
-
   const handleGotoButtonClick = () => {
     const inputDate = document.querySelector(".date-input").value;
     const [inputMonth, inputYear] = inputDate.split("/");
     dispatch({ type: 'SET_MONTH', payload: parseInt(inputMonth) - 1 });
     dispatch({ type: 'SET_YEAR', payload: parseInt(inputYear) });
   };
+
+  const handleAddEventClick = () => {
+    dispatch({ type: 'OPEN_EVENT_FORM' });
+  };
+
+  const handleCloseEventForm = () => {
+    dispatch({ type: 'CLOSE_EVENT_FORM' });
+    // Reset input fields
+    dispatch({ type: 'SET_EVENT_TITLE', payload: '' });
+    dispatch({ type: 'SET_START_TIME', payload: '' });
+    dispatch({ type: 'SET_END_TIME', payload: '' });
+  };
+  
+
+  const handleEventTitleChange = (e) => {
+    dispatch({ type: 'SET_EVENT_TITLE', payload: e.target.value });
+  };
+
+  const handleStartTimeChange = (e) => {
+    dispatch({ type: 'SET_START_TIME', payload: e.target.value });
+  };
+
+  const handleEndTimeChange = (e) => {
+    dispatch({ type: 'SET_END_TIME', payload: e.target.value });
+  };
+
+  const handleSubmitEvent = () => {
+    // Handle event submission logic here
+    // You can add the event to your eventsArr state
+    dispatch({ type: 'CLOSE_EVENT_FORM' });
+  };
+
+  const renderTimeOptions = () => {
+    const timeOptions = [];
+    for (let hour = 0; hour < 24; hour++) {
+      for (let minute = 0; minute < 60; minute += 15) {
+        const formattedHour = hour.toString().padStart(2, '0');
+        const formattedMinute = minute.toString().padStart(2, '0');
+        const time = `${formattedHour}:${formattedMinute}`;
+        timeOptions.push(
+          <option key={time} value={time}>{time}</option>
+        );
+      }
+    }
+    return timeOptions;
+  };
+  
 
   return (
     <div className='calendar_component'>
@@ -182,17 +244,42 @@ const Calendar = () => {
           </div>
         </div>
         <div className="right">
-          <div className="today-date">
-            <div className="event-day">{activeDay}</div>
-            <div className="event-date">{months[month]} {year}</div>
-          </div>
-          <div className="events">
-            {updateEvents(activeDay)}
-          </div>
+        <div className="today-date">
+          <div className="event-day">{activeDay}</div>
+          <div className="event-date">{months[month]} {year}</div>
         </div>
-        <button className="add-event">
-            <i className="fas fa-plus"></i>
-        </button>
+        <div className="events">
+          {/* Display events */}
+          {updateEvents(activeDay)}
+
+          {/* Add event form modal */}
+          {showEventForm && (
+            <div className="add-event-wrapper active">
+              <div className="add-event-header">
+                <div className="calendar_title">Add Event</div>
+                <div className="event_close" onClick={handleCloseEventForm}>✖</div>
+              </div>
+              <div className="add-event-body">
+                <input type="text" className='event_text' value={eventTitle} onChange={handleEventTitleChange} placeholder="Event Title" />
+                <select className="event_text" value={startTime} onChange={handleStartTimeChange}>
+                  <option value="">Select Start Time</option>
+                  {renderTimeOptions()}
+                </select>
+                <select className="event_text" value={endTime} onChange={handleEndTimeChange}>
+                  <option value="">Select End Time</option>
+                  {renderTimeOptions()}
+                </select>
+              </div>
+              <div className="add-event-footer">
+                <button className="add-event-btn" onClick={handleSubmitEvent}>Add Event</button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+      <button className="add-event" onClick={handleAddEventClick}>
+        <i className="fas fa-plus"></i>
+      </button>
       </div>
     </div>
   );
