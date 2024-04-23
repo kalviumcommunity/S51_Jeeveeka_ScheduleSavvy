@@ -6,6 +6,7 @@
 
 .footer-content-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding-bottom: 20px;
     border-bottom: 1px solid #ccc;
@@ -30,14 +31,15 @@
     padding: 0;
 }
 
-.footer-links .footer_li,
-.footer-social-links .footer_li{
+.footer-links li,
+.footer-social-links li {
     margin-bottom: 5px;
 }
 
 .footer-link,
 .footer-social-link {
     text-decoration: none;
+    color: white;
 }
 
 .footer-social-link:hover {
