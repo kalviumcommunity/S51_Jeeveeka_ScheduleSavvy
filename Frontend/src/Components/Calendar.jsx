@@ -1,17 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import '../Styles/Calendar.css';
 
 const Calendar = () => {
-  const [today, setToday] = useState(new Date());
-  const [activeDay, setActiveDay] = useState(null);
-  const [month, setMonth] = useState(today.getMonth());
-  const [year, setYear] = useState(today.getFullYear());
-  const [eventsArr, setEventsArr] = useState([]);
-  const [days, setDays] = useState([]); // Initialize as an empty array
-  const [openAddEventModal, setOpenAddEventModal] = useState(true);
-  const [eventName, setEventName] = useState("");
-  const [eventTimeFrom, setEventTimeFrom] = useState("");
-  const [eventTimeTo, setEventTimeTo] = useState("");
+  const today = new Date();
+  
+  const initialState = {
+    activeDay: null,
+    month: today.getMonth(),
+    year: today.getFullYear(),
+    eventsArr: [],
+    days: [],
+  };
+
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case 'SET_ACTIVE_DAY':
+        return { ...state, activeDay: action.payload };
+      case 'SET_MONTH':
+        return { ...state, month: action.payload };
+      case 'SET_YEAR':
+        return { ...state, year: action.payload };
+      case 'SET_EVENTS_ARR':
+        return { ...state, eventsArr: action.payload };
+      case 'SET_DAYS':
+        return { ...state, days: action.payload };
+      default:
+        return state;
+    }
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { activeDay, month, year, eventsArr, days } = state;
 
   useEffect(() => {
     initCalendar();
@@ -27,7 +46,7 @@ const Calendar = () => {
   const getEvents = () => {
     const savedEvents = localStorage.getItem("events");
     if (savedEvents) {
-      setEventsArr(JSON.parse(savedEvents));
+      dispatch({ type: 'SET_EVENTS_ARR', payload: JSON.parse(savedEvents) });
     }
   };
 
@@ -60,32 +79,31 @@ const Calendar = () => {
       daysArray.push(null);
     }
 
-    setDays(daysArray);
+    dispatch({ type: 'SET_DAYS', payload: daysArray });
   };
 
   const prevMonth = () => {
     if (month === 0) {
-      setMonth(11);
-      setYear(year - 1);
+      dispatch({ type: 'SET_MONTH', payload: 11 });
+      dispatch({ type: 'SET_YEAR', payload: year - 1 });
     } else {
-      setMonth(month - 1);
+      dispatch({ type: 'SET_MONTH', payload: month - 1 });
     }
   };
 
   const nextMonth = () => {
     if (month === 11) {
-      setMonth(0);
-      setYear(year + 1);
+      dispatch({ type: 'SET_MONTH', payload: 0 });
+      dispatch({ type: 'SET_YEAR', payload: year + 1 });
     } else {
-      setMonth(month + 1);
+      dispatch({ type: 'SET_MONTH', payload: month + 1 });
     }
   };
-  
 
   const getActiveDay = (date) => {
     const day = new Date(year, month, date);
     const dayName = day.toString().split(" ")[0];
-    setActiveDay(dayName);
+    dispatch({ type: 'SET_ACTIVE_DAY', payload: dayName });
   };
 
   const updateEvents = (date) => {
@@ -110,23 +128,23 @@ const Calendar = () => {
 
   const handleDayClick = (day) => {
     getActiveDay(day);
-    setActiveDay(day);
   };
 
   const handleTodayButtonClick = () => {
     const currentDate = new Date();
-    setMonth(currentDate.getMonth());
-    setYear(currentDate.getFullYear());
-    setActiveDay(currentDate.getDate()); // Set active day to the current date
-  }; 
+    const dayName = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
+    dispatch({ type: 'SET_MONTH', payload: currentDate.getMonth() });
+    dispatch({ type: 'SET_YEAR', payload: currentDate.getFullYear() });
+    dispatch({ type: 'SET_ACTIVE_DAY', payload: dayName });
+  };
+   
 
   const handleGotoButtonClick = () => {
     const inputDate = document.querySelector(".date-input").value;
     const [inputMonth, inputYear] = inputDate.split("/");
-    setMonth(parseInt(inputMonth) - 1);
-    setYear(parseInt(inputYear));
+    dispatch({ type: 'SET_MONTH', payload: parseInt(inputMonth) - 1 });
+    dispatch({ type: 'SET_YEAR', payload: parseInt(inputYear) });
   };
-
 
   return (
     <div className='calendar_component'>
