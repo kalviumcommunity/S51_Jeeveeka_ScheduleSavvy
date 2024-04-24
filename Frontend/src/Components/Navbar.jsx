@@ -2,7 +2,7 @@ import React from 'react'
 import '../Styles/Navbar.css'
 import image from '../assets/image1.jpg'
 import logo from '../assets/Logo.png'
-
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
   return (
@@ -51,7 +51,7 @@ export default function Navbar() {
                     <ul className="navbar_dropmenu">
                     <li className='navbar_li'><h6 className='navbar_headers'>About Us</h6></li>
                     <li className='navbar_li'><h6 className='navbar_headers'>Contact Us</h6></li>
-                    <li className='navbar_li'><h6 className='navbar_headers'>Feedback</h6></li>
+                    <Link to='/feedback'><li className='navbar_li'><h6 className='navbar_headers'>Feedback</h6></li></Link>
                     </ul>
                 </li>
                 <li className='navbar_li'><h6 className='navbar_headers'>Profile</h6></li>

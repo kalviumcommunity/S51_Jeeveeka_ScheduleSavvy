@@ -92,14 +92,11 @@ const Signup = () => {
                         </div>
                         <Link to="/forgetPassword"><p id='forget_pswd'>Forgot password?</p></Link>
                         <input type="submit" value="Login" className="btn" />
-                        <p className="social-text">Or Sign in with social platform</p>
-                        {/* Social media sign-in buttons */}
+                        <p className="social-text">Or</p>
                         <div className="social-media">
                             <a onClick={googleAuth} href="#" className="social-icon">
                                 <i className="fab fa-google" />
-                            </a>
-                            <a href="#" className="social-icon">
-                                <i className="fab fa-github" />
+                                <p className='social-icon-text'>Sign in with Google</p>
                             </a>
                         </div>
                         <p className="account-text">
@@ -122,14 +119,11 @@ const Signup = () => {
                             <input className='signup_input' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                         </div>
                         <input type="submit" value="Sign up" className="btn" />
-                        <p className="social-text">Or Sign in with social platform</p>
-                        {/* Social media sign-up buttons */}
+                        <p className="social-text">Or</p>
                         <div className="social-media">
                             <a onClick={googleAuth} href="#" className="social-icon">
                                 <i className="fab fa-google" />
-                            </a>
-                            <a href="#" className="social-icon">
-                                <i className="fab fa-github" />
+                                <p className='social-icon-text'>Sign in with Google</p>
                             </a>
                         </div>
                         <p className="account-text">

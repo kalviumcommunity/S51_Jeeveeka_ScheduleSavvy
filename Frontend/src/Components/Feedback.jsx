@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../Styles/Feedback.css';
+import { Link } from 'react-router-dom';
 
 function Feedback() {
   const [sent, setSent] = useState(false);
@@ -10,7 +11,7 @@ function Feedback() {
 
   return (
     <div className='feedback_form'>
-        <div id='back'><button className='feedback_button'>Back</button></div>
+        <Link to='/home'><div id='back'><button className='feedback_button'>Back</button></div></Link>
         <div className={`wrapper centered ${sent ? 'sent' : ''}`}>
         <article className="letter">
             <div className="side">

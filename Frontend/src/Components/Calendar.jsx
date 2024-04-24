@@ -50,9 +50,12 @@ const Calendar = () => {
 
   useEffect(() => {
     initCalendar();
+    const currentDate = today.getDate();
+    const dayName = today.toLocaleDateString('en-US', { weekday: 'short' });
+    dispatch({ type: 'SET_ACTIVE_DAY', payload: dayName });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month, year]);
-
+  
   const months = [
     "January", "February", "March", "April",
     "May", "June", "July", "August",
