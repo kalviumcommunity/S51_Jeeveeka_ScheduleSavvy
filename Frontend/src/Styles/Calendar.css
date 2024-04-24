@@ -28,9 +28,8 @@
 
 .calendar_container {
     position: relative;
-    width: 1200px;
+    width: 1100px;
     min-height: 700px;
-    margin: 0 auto;
     padding: 5px;
     color: #fff;
     display: flex;
