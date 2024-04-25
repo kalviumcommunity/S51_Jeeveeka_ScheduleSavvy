@@ -362,12 +362,11 @@
 
 .events .event {
   position: relative;
-  width: 95%;
+  width: calc(100% - 40px); /* Adjusted width */
   min-height: 70px;
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  gap: 5px;
+  justify-content: space-between; /* Aligning elements */
+  align-items: center; /* Aligning elements */
   padding: 0 20px;
   padding-left: 50px;
   color: #fff;
@@ -388,7 +387,7 @@
 }
 
 .event-title{
-    margin-left: 1vw;
+  margin-left: 1vw;
 }
 
 .events .event .calendar_title {
@@ -409,7 +408,7 @@
   font-size: 0.8rem;
   font-weight: 500;
   color: #878895;
-  margin-left: 1vw;
+  margin-right: 2vw;
   pointer-events: none;
 }
 
@@ -424,7 +423,7 @@
   right: 0;
   font-size: 3rem;
   line-height: 1;
-  display: none;
+  display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0.3;
@@ -432,8 +431,11 @@
   transform: translateY(-50%);
 }
 
-.events .event:hover::after {
-  display: flex;
+.events .event .edit-event-link {
+  color: var(--primary-clr);
+  text-decoration: underline;
+  cursor: pointer;
+  margin-left: 10px; /* Adjusted margin */
 }
 
 .add-event {
