@@ -49,7 +49,7 @@ export default function Navbar() {
                     <input className='navbar_input' type="checkbox" id="showDrop"/>
                     <label htmlFor="showDrop" className="mobile-item">More Info</label>
                     <ul className="navbar_dropmenu">
-                    <li className='navbar_li'><h6 className='navbar_headers'>About Us</h6></li>
+                    <li className='navbar_li'><Link to='/aboutus'><h6 className='navbar_headers'>About Us</h6></Link></li>
                     <li className='navbar_li'><h6 className='navbar_headers'>Contact Us</h6></li>
                     <Link to='/feedback'><li className='navbar_li'><h6 className='navbar_headers'>Feedback</h6></li></Link>
                     </ul>

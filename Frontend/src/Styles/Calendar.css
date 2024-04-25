@@ -37,6 +37,12 @@
     background-color: #373c4f;
 }
 
+.calendar .days .day.selected-day {
+  background-color: var(--primary-clr);
+  box-shadow: 0 0 10px 2px var(--primary-clr);
+  color: white;
+}
+
 .left {
     width: 60%;
     padding: 20px;
@@ -55,6 +61,56 @@
     background-color: #fff;
 }
 
+.edit-event-wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 1000;
+    color: black;
+}
+  
+.edit-event-header {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 10px;
+}
+  
+.edit-event-header .calendar_title {
+   font-size: 18px;
+}
+  
+.edit-event-header .event_close {
+   cursor: pointer;
+}
+  
+.edit-event-body {
+   margin-bottom: 10px;
+}
+  
+.event_text {
+   width: 100%;
+   padding: 5px;
+   margin-bottom: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+}
+  
+.edit-event-footer {
+   display: flex;
+   justify-content: flex-end;
+}
+  
+.edit_event_close {
+   font-size: 20px;
+   cursor: pointer;
+}
+  
 .calendar::before,
 .calendar::after {
     content: "";
@@ -135,23 +191,22 @@
     justify-content: center;
     cursor: pointer;
     color: var(--primary-clr);
-    border: 1px solid #f5f5f5;
 }
 
 .calendar .days .day:nth-child(7n + 1) {
-    border-left: 2px solid #f5f5f5;
+    border-left: 2px ;
 }
 
 .calendar .days .day:nth-child(7n) {
-    border-right: 2px solid #f5f5f5;
+    border-right: 2px;
 }
 
 .calendar .days .day:nth-child(-n + 7) {
-    border-top: 2px solid #f5f5f5;
+    border-top: 2px ;
 }
 
 .calendar .days .day:nth-child(n + 29) {
-    border-bottom: 2px solid #f5f5f5;
+    border-bottom: 2px;
 }
   
 .calendar .days .day:not(.prev-date, .next-date):hover {
@@ -306,78 +361,79 @@
 }
 
 .events .event {
-    position: relative;
-    width: 95%;
-    min-height: 70px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 5px;
-    padding: 0 20px;
-    padding-left: 50px;
-    color: #fff;
-    background: linear-gradient(90deg, #3f4458, transparent);
-    cursor: pointer;
-}
-
-.events .event:nth-child(even) {
-    background: transparent;
+  position: relative;
+  width: 95%;
+  min-height: 70px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 20px;
+  padding-left: 50px;
+  color: #fff;
+  cursor: pointer;
 }
 
 .events .event:hover {
-    background: linear-gradient(90deg, var(--primary-clr), transparent);
+  color: white;
+  transform: scale(1.02); /* Added a slight scale effect on hover */
+}
+
+.events .event .title {
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.event-title{
+    margin-left: 1vw;
 }
 
 .events .event .calendar_title {
-    display: flex;
-    align-items: center;
-    pointer-events: none;
-}
-
-.events .event .calendar_title .event-title {
-    font-size: 1rem;
-    font-weight: 400;
-    margin-left: 20px;
+  font-weight: 200;
+  margin-left: 20px;
 }
 
 .events .event i {
-    color: var(--primary-clr);
-    font-size: 0.5rem;
+  color: var(--primary-clr);
+  font-size: 0.5rem;
 }
 
 .events .event:hover i {
-    color: #fff;
+  color: #fff;
 }
 
 .events .event .event-time {
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #878895;
-    margin-left: 15px;
-    pointer-events: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #878895;
+  margin-left: 1vw;
+  pointer-events: none;
 }
 
 .events .event:hover .event-time {
-    color: #fff;
+  color: #fff;
 }
 
 .events .event::after {
-    content: "✓";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    font-size: 3rem;
-    line-height: 1;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    opacity: 0.3;
-    color: var(--primary-clr);
-    transform: translateY(-50%);
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  font-size: 3rem;
+  line-height: 1;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+  color: var(--primary-clr);
+  transform: translateY(-50%);
 }
 
 .events .event:hover::after {
-    display: flex;
+  display: flex;
 }
 
 .add-event {
