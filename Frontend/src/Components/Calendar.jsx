@@ -1,19 +1,24 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import '../Styles/Calendar.css';
 
 const Calendar = () => {
   const today = new Date();
-  
+
   const initialState = {
-    activeDay: null,
+    activeDay: today.getDate(),
     month: today.getMonth(),
     year: today.getFullYear(),
     eventsArr: [],
     days: [],
     showEventForm: false,
+    showEditEventForm: false,
     eventTitle: '',
     startTime: '',
-    endTime: ''
+    endTime: '',
+    eventToEdit: null,
+    editedEventTitle: '',
+    editedStartTime: '',
+    editedEndTime: ''
   };
 
   const reducer = (state, action) => {
@@ -32,46 +37,45 @@ const Calendar = () => {
         return { ...state, showEventForm: true };
       case 'CLOSE_EVENT_FORM':
         return { ...state, showEventForm: false };
+      case 'OPEN_EDIT_EVENT_FORM':
+        return { ...state, showEditEventForm: true };
+      case 'CLOSE_EDIT_EVENT_FORM':
+        return { ...state, showEditEventForm: false };
       case 'SET_EVENT_TITLE':
         return { ...state, eventTitle: action.payload };
       case 'SET_START_TIME':
         return { ...state, startTime: action.payload };
       case 'SET_END_TIME':
         return { ...state, endTime: action.payload };
+      case 'SET_EVENT_TO_EDIT':
+        return { ...state, eventToEdit: action.payload };
+      case 'SET_EDITED_EVENT_TITLE':
+        return { ...state, editedEventTitle: action.payload };
+      case 'SET_EDITED_START_TIME':
+        return { ...state, editedStartTime: action.payload };
+      case 'SET_EDITED_END_TIME':
+        return { ...state, editedEndTime: action.payload };
       default:
         return state;
     }
   };
 
-
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { activeDay, month, year, eventsArr, days } = state;
-  const { showEventForm, eventTitle, startTime, endTime } = state;
+  const { activeDay, month, year, eventsArr, days, showEventForm, showEditEventForm, eventTitle, startTime, endTime, eventToEdit, editedEventTitle, editedStartTime, editedEndTime } = state;
 
   useEffect(() => {
     initCalendar();
     const currentDate = today.getDate();
     const dayName = today.toLocaleDateString('en-US', { weekday: 'short' });
-    dispatch({ type: 'SET_ACTIVE_DAY', payload: dayName });
+    dispatch({ type: 'SET_ACTIVE_DAY', payload: currentDate });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month, year]);
-  
+
   const months = [
     "January", "February", "March", "April",
     "May", "June", "July", "August",
     "September", "October", "November", "December"
   ];
-
-  const getEvents = () => {
-    const savedEvents = localStorage.getItem("events");
-    if (savedEvents) {
-      dispatch({ type: 'SET_EVENTS_ARR', payload: JSON.parse(savedEvents) });
-    }
-  };
-
-  const saveEvents = () => {
-    localStorage.setItem("events", JSON.stringify(eventsArr));
-  };
 
   const initCalendar = () => {
     const firstDayOfMonth = new Date(year, month, 1);
@@ -122,7 +126,84 @@ const Calendar = () => {
   const getActiveDay = (date) => {
     const day = new Date(year, month, date);
     const dayName = day.toString().split(" ")[0];
-    dispatch({ type: 'SET_ACTIVE_DAY', payload: dayName });
+    dispatch({ type: 'SET_ACTIVE_DAY', payload: date });
+  };
+
+  const handleDayClick = (day) => {
+    // Check if the clicked day is within the current month
+    const clickedDate = new Date(year, month, day);
+    const clickedMonth = clickedDate.getMonth();
+    
+    console.log("Clicked day:", day);
+    console.log("Clicked month:", clickedMonth);
+    
+    if (clickedMonth === month) {
+      // If the clicked day is in the current month, update the active day only
+      console.log("Updating active day only");
+      dispatch({ type: 'SET_ACTIVE_DAY', payload: day });
+    } else {
+      // If the clicked day is in a different month, update both the month and the active day
+      console.log("Updating month and active day");
+      dispatch({ type: 'SET_MONTH', payload: clickedMonth });
+      dispatch({ type: 'SET_YEAR', payload: clickedDate.getFullYear() });
+      dispatch({ type: 'SET_ACTIVE_DAY', payload: day });
+    }
+  };
+
+  const handleTodayButtonClick = () => {
+    const currentDate = new Date();
+    dispatch({ type: 'SET_MONTH', payload: currentDate.getMonth() });
+    dispatch({ type: 'SET_YEAR', payload: currentDate.getFullYear() });
+    dispatch({ type: 'SET_ACTIVE_DAY', payload: currentDate.getDate() });
+  };
+
+  const handleGotoButtonClick = () => {
+    const inputDate = document.querySelector(".date-input").value;
+    const [inputMonth, inputYear] = inputDate.split("/");
+    dispatch({ type: 'SET_MONTH', payload: parseInt(inputMonth) - 1 });
+    dispatch({ type: 'SET_YEAR', payload: parseInt(inputYear) });
+  };
+
+  const handleAddEventClick = () => {
+    dispatch({ type: 'OPEN_EVENT_FORM' });
+  };
+
+  const handleCloseEventForm = () => {
+    dispatch({ type: 'CLOSE_EVENT_FORM' });
+    dispatch({ type: 'SET_EVENT_TITLE', payload: '' });
+    dispatch({ type: 'SET_START_TIME', payload: '' });
+    dispatch({ type: 'SET_END_TIME', payload: '' });
+  };
+
+  const handleCloseEditEventForm = () => {
+    dispatch({ type: 'CLOSE_EDIT_EVENT_FORM' });
+    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: '' });
+    dispatch({ type: 'SET_EDITED_START_TIME', payload: '' });
+    dispatch({ type: 'SET_EDITED_END_TIME', payload: '' });
+  };
+
+  const handleEventTitleChange = (e) => {
+    dispatch({ type: 'SET_EVENT_TITLE', payload: e.target.value });
+  };
+
+  const handleStartTimeChange = (e) => {
+    dispatch({ type: 'SET_START_TIME', payload: e.target.value });
+  };
+
+  const handleEndTimeChange = (e) => {
+    dispatch({ type: 'SET_END_TIME', payload: e.target.value });
+  };
+
+  const handleEditEventTitleChange = (e) => {
+    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: e.target.value });
+  };
+
+  const handleEditedStartTimeChange = (e) => {
+    dispatch({ type: 'SET_EDITED_START_TIME', payload: e.target.value });
+  };
+
+  const handleEditedEndTimeChange = (e) => {
+    dispatch({ type: 'SET_EDITED_END_TIME', payload: e.target.value });
   };
 
   const updateEvents = (date) => {
@@ -137,6 +218,7 @@ const Calendar = () => {
         <div className="title">
           <i className="fas fa-circle"></i>
           <h3 className="event-title">{event.title}</h3>
+          <button className="edit-event-btn" onClick={() => handleEditEvent(event)}>Edit</button>
         </div>
         <div className="event-time">
           <span className="event-time">{event.time}</span>
@@ -145,54 +227,46 @@ const Calendar = () => {
     ));
   };
 
-  const handleDayClick = (day) => {
-    getActiveDay(day);
+  const handleEditEvent = (event) => {
+    dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
+    dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
   };
 
-  const handleTodayButtonClick = () => {
-    const currentDate = new Date();
-    const dayName = currentDate.toLocaleDateString('en-US', { weekday: 'short' });
-    dispatch({ type: 'SET_MONTH', payload: currentDate.getMonth() });
-    dispatch({ type: 'SET_YEAR', payload: currentDate.getFullYear() });
-    dispatch({ type: 'SET_ACTIVE_DAY', payload: dayName });
-  };
-   
-  const handleGotoButtonClick = () => {
-    const inputDate = document.querySelector(".date-input").value;
-    const [inputMonth, inputYear] = inputDate.split("/");
-    dispatch({ type: 'SET_MONTH', payload: parseInt(inputMonth) - 1 });
-    dispatch({ type: 'SET_YEAR', payload: parseInt(inputYear) });
-  };
-
-  const handleAddEventClick = () => {
-    dispatch({ type: 'OPEN_EVENT_FORM' });
-  };
-
-  const handleCloseEventForm = () => {
+  const handleSubmitEvent = () => {
+    const newEvent = {
+      day: activeDay,
+      month: month + 1,
+      year: year,
+      title: eventTitle,
+      time: `${startTime} - ${endTime}`
+    };
+    dispatch({ type: 'SET_EVENTS_ARR', payload: [...eventsArr, newEvent] });
     dispatch({ type: 'CLOSE_EVENT_FORM' });
-    // Reset input fields
     dispatch({ type: 'SET_EVENT_TITLE', payload: '' });
     dispatch({ type: 'SET_START_TIME', payload: '' });
     dispatch({ type: 'SET_END_TIME', payload: '' });
   };
-  
 
-  const handleEventTitleChange = (e) => {
-    dispatch({ type: 'SET_EVENT_TITLE', payload: e.target.value });
-  };
+  const handleSaveEditedEvent = () => {
+    const eventIndex = eventsArr.findIndex(
+      (e) => e.day === eventToEdit.day && e.month === eventToEdit.month && e.year === eventToEdit.year
+    );
 
-  const handleStartTimeChange = (e) => {
-    dispatch({ type: 'SET_START_TIME', payload: e.target.value });
-  };
+    if (eventIndex !== -1) {
+      const updatedEvent = {
+        ...eventToEdit,
+        title: editedEventTitle || eventToEdit.title,
+        time: `${editedStartTime || eventToEdit.time.split(' - ')[0]} - ${editedEndTime || eventToEdit.time.split(' - ')[1]}`
+      };
 
-  const handleEndTimeChange = (e) => {
-    dispatch({ type: 'SET_END_TIME', payload: e.target.value });
-  };
+      const updatedEventsArr = [...eventsArr];
+      updatedEventsArr[eventIndex] = updatedEvent;
 
-  const handleSubmitEvent = () => {
-    // Handle event submission logic here
-    // You can add the event to your eventsArr state
-    dispatch({ type: 'CLOSE_EVENT_FORM' });
+      dispatch({ type: 'SET_EVENTS_ARR', payload: updatedEventsArr });
+      dispatch({ type: 'CLOSE_EDIT_EVENT_FORM' });
+    } else {
+      console.log('Event not found!');
+    }
   };
 
   const renderTimeOptions = () => {
@@ -209,7 +283,6 @@ const Calendar = () => {
     }
     return timeOptions;
   };
-  
 
   return (
     <div className='calendar_component'>
@@ -232,8 +305,8 @@ const Calendar = () => {
             </div>
             <div className="days">
               {days.map((day, index) => (
-                <div key={index} className={`day ${day === today.getDate() && month === today.getMonth() ? "today" : ""} ${day === activeDay ? "active" : ""}`} onClick={() => handleDayClick(day)}>
-                  {day}
+               <div key={index} id={`day-${day}`} className={`day ${day === activeDay ? "selected-day" : ""}`} onClick={() => handleDayClick(day)}>
+                {day}
                 </div>
               ))}
             </div>
@@ -247,42 +320,66 @@ const Calendar = () => {
           </div>
         </div>
         <div className="right">
-        <div className="today-date">
-          <div className="event-day">{activeDay}</div>
-          <div className="event-date">{months[month]} {year}</div>
-        </div>
-        <div className="events">
-          {/* Display events */}
-          {updateEvents(activeDay)}
+          <div className="today-date">
+            <div className="event-day">{activeDay}</div>
+            <div className="event-date">{months[month]} {year}</div>
+          </div>
+          <div className="events">
+            {/* Display events */}
+            {updateEvents(activeDay)}
 
-          {/* Add event form modal */}
-          {showEventForm && (
-            <div className="add-event-wrapper active">
-              <div className="add-event-header">
-                <div className="calendar_title">Add Event</div>
-                <div className="event_close" onClick={handleCloseEventForm}>✖</div>
+            {/* Add event form modal */}
+            {showEventForm && (
+              <div className="add-event-wrapper active">
+                <div className="add-event-header">
+                  <div className="calendar_title">Add Event</div>
+                  <div className="event_close" onClick={handleCloseEventForm}>✖</div>
+                </div>
+                <div className="add-event-body">
+                  <input type="text" className='event_text' value={eventTitle} onChange={handleEventTitleChange} placeholder="Event Title" />
+                  <select className="event_text" value={startTime} onChange={handleStartTimeChange}>
+                    <option value="">Select Start Time</option>
+                    {renderTimeOptions()}
+                  </select>
+                  <select className="event_text" value={endTime} onChange={handleEndTimeChange}>
+                    <option value="">Select End Time</option>
+                    {renderTimeOptions()}
+                  </select>
+                </div>
+                <div className="add-event-footer">
+                  <button className="add-event-btn" onClick={handleSubmitEvent}>Add Event</button>
+                </div>
               </div>
-              <div className="add-event-body">
-                <input type="text" className='event_text' value={eventTitle} onChange={handleEventTitleChange} placeholder="Event Title" />
-                <select className="event_text" value={startTime} onChange={handleStartTimeChange}>
-                  <option value="">Select Start Time</option>
-                  {renderTimeOptions()}
-                </select>
-                <select className="event_text" value={endTime} onChange={handleEndTimeChange}>
-                  <option value="">Select End Time</option>
-                  {renderTimeOptions()}
-                </select>
+            )}
+
+            {/* Edit event form modal */}
+            {showEditEventForm && (
+              <div className="edit-event-wrapper active">
+                <div className="edit-event-header">
+                  <div className="calendar_title">Edit Event</div>
+                  <div className="edit_event_close" onClick={handleCloseEditEventForm}>✖</div>
+                </div>
+                <div className="edit-event-body">
+                  <input type="text" className='event_text' value={editedEventTitle} onChange={handleEditEventTitleChange} placeholder="Event Title" />
+                  <select className="event_text" value={editedStartTime} onChange={handleEditedStartTimeChange}>
+                    <option value="">Select Start Time</option>
+                    {renderTimeOptions()}
+                  </select>
+                  <select className="event_text" value={editedEndTime} onChange={handleEditedEndTimeChange}>
+                    <option value="">Select End Time</option>
+                    {renderTimeOptions()}
+                  </select>
+                </div>
+                <div className="edit-event-footer">
+                  <button className="edit-event-btn" onClick={handleSaveEditedEvent}>Save</button>
+                </div>
               </div>
-              <div className="add-event-footer">
-                <button className="add-event-btn" onClick={handleSubmitEvent}>Add Event</button>
-              </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
-      </div>
-      <button className="add-event" onClick={handleAddEventClick}>
-        <i className="fas fa-plus"></i>
-      </button>
+        <button className="add-event" onClick={handleAddEventClick}>
+          <i className="fas fa-plus"></i>
+        </button>
       </div>
     </div>
   );
