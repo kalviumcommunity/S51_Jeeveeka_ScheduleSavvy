@@ -130,25 +130,26 @@ const Calendar = () => {
   };
 
   const handleDayClick = (day) => {
+    // Check if the clicked day is null (empty box)
+    if (day === null) {
+      return;
+    }
+  
     // Check if the clicked day is within the current month
     const clickedDate = new Date(year, month, day);
     const clickedMonth = clickedDate.getMonth();
     
-    console.log("Clicked day:", day);
-    console.log("Clicked month:", clickedMonth);
-    
     if (clickedMonth === month) {
       // If the clicked day is in the current month, update the active day only
-      console.log("Updating active day only");
       dispatch({ type: 'SET_ACTIVE_DAY', payload: day });
     } else {
       // If the clicked day is in a different month, update both the month and the active day
-      console.log("Updating month and active day");
       dispatch({ type: 'SET_MONTH', payload: clickedMonth });
       dispatch({ type: 'SET_YEAR', payload: clickedDate.getFullYear() });
       dispatch({ type: 'SET_ACTIVE_DAY', payload: day });
     }
   };
+  
 
   const handleTodayButtonClick = () => {
     const currentDate = new Date();
@@ -212,13 +213,13 @@ const Calendar = () => {
       month + 1 === event.month &&
       year === event.year
     );
-
+  
     return filteredEvents.map((event, index) => (
       <div key={index} className="event">
         <div className="title">
           <i className="fas fa-circle"></i>
           <h3 className="event-title">{event.title}</h3>
-          <button className="edit-event-btn" onClick={() => handleEditEvent(event)}>Edit</button>
+          <button className="edit-event-link" onClick={() => handleEditLinkClick(event)}>Edit</button>
         </div>
         <div className="event-time">
           <span className="event-time">{event.time}</span>
@@ -226,10 +227,41 @@ const Calendar = () => {
       </div>
     ));
   };
-
+  
+  const handleEditLinkClick = (event) => {
+    console.log("Edit Link Clicked");
+    console.log("Event:", event);
+    console.log("Current showEditEventForm state:", showEditEventForm);
+    dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
+    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
+    dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
+    dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
+    dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
+  };
+  
+  
   const handleEditEvent = (event) => {
     dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
+    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
+    dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
+    dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
     dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
+  };
+  
+
+  const renderTimeOptions = () => {
+    const timeOptions = [];
+    for (let hour = 0; hour < 24; hour++) {
+      for (let minute = 0; minute < 60; minute += 15) {
+        const formattedHour = hour.toString().padStart(2, '0');
+        const formattedMinute = minute.toString().padStart(2, '0');
+        const time = `${formattedHour}:${formattedMinute}`;
+        timeOptions.push(
+          <option key={time} value={time}>{time}</option>
+        );
+      }
+    }
+    return timeOptions;
   };
 
   const handleSubmitEvent = () => {
@@ -248,41 +280,12 @@ const Calendar = () => {
   };
 
   const handleSaveEditedEvent = () => {
-    const eventIndex = eventsArr.findIndex(
-      (e) => e.day === eventToEdit.day && e.month === eventToEdit.month && e.year === eventToEdit.year
-    );
-
-    if (eventIndex !== -1) {
-      const updatedEvent = {
-        ...eventToEdit,
-        title: editedEventTitle || eventToEdit.title,
-        time: `${editedStartTime || eventToEdit.time.split(' - ')[0]} - ${editedEndTime || eventToEdit.time.split(' - ')[1]}`
-      };
-
-      const updatedEventsArr = [...eventsArr];
-      updatedEventsArr[eventIndex] = updatedEvent;
-
-      dispatch({ type: 'SET_EVENTS_ARR', payload: updatedEventsArr });
-      dispatch({ type: 'CLOSE_EDIT_EVENT_FORM' });
-    } else {
-      console.log('Event not found!');
-    }
+    // Logic to save the edited event details
+    // For example, you can dispatch an action to update the eventsArr state with the edited event
+    // Remember to close the edit event form after saving
+    dispatch({ type: 'CLOSE_EDIT_EVENT_FORM' });
   };
-
-  const renderTimeOptions = () => {
-    const timeOptions = [];
-    for (let hour = 0; hour < 24; hour++) {
-      for (let minute = 0; minute < 60; minute += 15) {
-        const formattedHour = hour.toString().padStart(2, '0');
-        const formattedMinute = minute.toString().padStart(2, '0');
-        const time = `${formattedHour}:${formattedMinute}`;
-        timeOptions.push(
-          <option key={time} value={time}>{time}</option>
-        );
-      }
-    }
-    return timeOptions;
-  };
+  
 
   return (
     <div className='calendar_component'>
