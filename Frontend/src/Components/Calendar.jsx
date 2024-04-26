@@ -243,13 +243,13 @@ const Calendar = () => {
   };
   
   
-  // const handleEditEvent = (event) => {
-  //   dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
-  //   dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
-  //   dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
-  //   dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
-  //   dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
-  // };
+  const handleEditEvent = (event) => {
+    dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
+    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
+    dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
+    dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
+    dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
+  };
   
 
   const renderTimeOptions = () => {
