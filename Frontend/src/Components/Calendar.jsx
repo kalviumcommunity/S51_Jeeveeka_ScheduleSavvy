@@ -208,6 +208,7 @@ const Calendar = () => {
   };
 
   const updateEvents = (date) => {
+    console.log("Updating events for date:", date);
     const filteredEvents = eventsArr.filter(event =>
       date === event.day &&
       month + 1 === event.month &&
@@ -219,6 +220,7 @@ const Calendar = () => {
         <div className="title">
           <i className="fas fa-circle"></i>
           <h3 className="event-title">{event.title}</h3>
+          {/* Add the Edit button here */}
           <button className="edit-event-link" onClick={() => handleEditLinkClick(event)}>Edit</button>
         </div>
         <div className="event-time">
@@ -226,6 +228,7 @@ const Calendar = () => {
         </div>
       </div>
     ));
+    
   };
   
   const handleEditLinkClick = (event) => {
@@ -240,13 +243,13 @@ const Calendar = () => {
   };
   
   
-  const handleEditEvent = (event) => {
-    dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
-    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
-    dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
-    dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
-    dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
-  };
+  // const handleEditEvent = (event) => {
+  //   dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
+  //   dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
+  //   dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
+  //   dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
+  //   dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
+  // };
   
 
   const renderTimeOptions = () => {
@@ -280,9 +283,6 @@ const Calendar = () => {
   };
 
   const handleSaveEditedEvent = () => {
-    // Logic to save the edited event details
-    // For example, you can dispatch an action to update the eventsArr state with the edited event
-    // Remember to close the edit event form after saving
     dispatch({ type: 'CLOSE_EDIT_EVENT_FORM' });
   };
   
@@ -296,7 +296,7 @@ const Calendar = () => {
               <i className="fas fa-angle-left prev" onClick={prevMonth}></i>
               <div className="date">{months[month]} {year}</div>
               <i className="fas fa-angle-right next" onClick={nextMonth}></i>
-            </div>
+              </div>
             <div className="weekdays">
               <div>Sun</div>
               <div>Mon</div>
@@ -360,7 +360,7 @@ const Calendar = () => {
               <div className="edit-event-wrapper active">
                 <div className="edit-event-header">
                   <div className="calendar_title">Edit Event</div>
-                  <div className="edit_event_close" onClick={handleCloseEditEventForm}>✖</div>
+                  <div className="event_close" onClick={handleCloseEditEventForm}>✖</div>
                 </div>
                 <div className="edit-event-body">
                   <input type="text" className='event_text' value={editedEventTitle} onChange={handleEditEventTitleChange} placeholder="Event Title" />
@@ -374,7 +374,7 @@ const Calendar = () => {
                   </select>
                 </div>
                 <div className="edit-event-footer">
-                  <button className="edit-event-btn" onClick={handleSaveEditedEvent}>Save</button>
+                  <button className="save-edited-event-btn" onClick={handleSaveEditedEvent}>Save Changes</button>
                 </div>
               </div>
             )}
