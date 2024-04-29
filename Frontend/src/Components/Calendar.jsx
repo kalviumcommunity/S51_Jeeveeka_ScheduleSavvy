@@ -11,14 +11,9 @@ const Calendar = () => {
     eventsArr: [],
     days: [],
     showEventForm: false,
-    showEditEventForm: false,
     eventTitle: '',
     startTime: '',
-    endTime: '',
-    eventToEdit: null,
-    editedEventTitle: '',
-    editedStartTime: '',
-    editedEndTime: ''
+    endTime: ''
   };
 
   const reducer = (state, action) => {
@@ -37,38 +32,24 @@ const Calendar = () => {
         return { ...state, showEventForm: true };
       case 'CLOSE_EVENT_FORM':
         return { ...state, showEventForm: false };
-      case 'OPEN_EDIT_EVENT_FORM':
-        return { ...state, showEditEventForm: true };
-      case 'CLOSE_EDIT_EVENT_FORM':
-        return { ...state, showEditEventForm: false };
       case 'SET_EVENT_TITLE':
         return { ...state, eventTitle: action.payload };
       case 'SET_START_TIME':
         return { ...state, startTime: action.payload };
       case 'SET_END_TIME':
         return { ...state, endTime: action.payload };
-      case 'SET_EVENT_TO_EDIT':
-        return { ...state, eventToEdit: action.payload };
-      case 'SET_EDITED_EVENT_TITLE':
-        return { ...state, editedEventTitle: action.payload };
-      case 'SET_EDITED_START_TIME':
-        return { ...state, editedStartTime: action.payload };
-      case 'SET_EDITED_END_TIME':
-        return { ...state, editedEndTime: action.payload };
       default:
         return state;
     }
   };
 
   const [state, dispatch] = useReducer(reducer, initialState);
-  const { activeDay, month, year, eventsArr, days, showEventForm, showEditEventForm, eventTitle, startTime, endTime, eventToEdit, editedEventTitle, editedStartTime, editedEndTime } = state;
+  const { activeDay, month, year, eventsArr, days, showEventForm, eventTitle, startTime, endTime } = state;
 
   useEffect(() => {
     initCalendar();
     const currentDate = today.getDate();
-    const dayName = today.toLocaleDateString('en-US', { weekday: 'short' });
     dispatch({ type: 'SET_ACTIVE_DAY', payload: currentDate });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [month, year]);
 
   const months = [
@@ -123,12 +104,6 @@ const Calendar = () => {
     }
   };
 
-  const getActiveDay = (date) => {
-    const day = new Date(year, month, date);
-    const dayName = day.toString().split(" ")[0];
-    dispatch({ type: 'SET_ACTIVE_DAY', payload: date });
-  };
-
   const handleDayClick = (day) => {
     // Check if the clicked day is null (empty box)
     if (day === null) {
@@ -176,13 +151,6 @@ const Calendar = () => {
     dispatch({ type: 'SET_END_TIME', payload: '' });
   };
 
-  const handleCloseEditEventForm = () => {
-    dispatch({ type: 'CLOSE_EDIT_EVENT_FORM' });
-    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: '' });
-    dispatch({ type: 'SET_EDITED_START_TIME', payload: '' });
-    dispatch({ type: 'SET_EDITED_END_TIME', payload: '' });
-  };
-
   const handleEventTitleChange = (e) => {
     dispatch({ type: 'SET_EVENT_TITLE', payload: e.target.value });
   };
@@ -195,63 +163,28 @@ const Calendar = () => {
     dispatch({ type: 'SET_END_TIME', payload: e.target.value });
   };
 
-  const handleEditEventTitleChange = (e) => {
-    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: e.target.value });
-  };
-
-  const handleEditedStartTimeChange = (e) => {
-    dispatch({ type: 'SET_EDITED_START_TIME', payload: e.target.value });
-  };
-
-  const handleEditedEndTimeChange = (e) => {
-    dispatch({ type: 'SET_EDITED_END_TIME', payload: e.target.value });
-  };
-
+// Update the updateEvents function to include an edit button for each event
   const updateEvents = (date) => {
-    console.log("Updating events for date:", date);
     const filteredEvents = eventsArr.filter(event =>
       date === event.day &&
       month + 1 === event.month &&
       year === event.year
     );
-  
+
     return filteredEvents.map((event, index) => (
       <div key={index} className="event">
         <div className="title">
           <i className="fas fa-circle"></i>
           <h3 className="event-title">{event.title}</h3>
-          {/* Add the Edit button here */}
-          <button className="edit-event-link" onClick={() => handleEditLinkClick(event)}>Edit</button>
         </div>
         <div className="event-time">
           <span className="event-time">{event.time}</span>
+          <button className="edit-event-btn" onClick={() => handleEditEvent(event)}>Edit</button>
         </div>
       </div>
     ));
-    
   };
   
-  const handleEditLinkClick = (event) => {
-    console.log("Edit Link Clicked");
-    console.log("Event:", event);
-    console.log("Current showEditEventForm state:", showEditEventForm);
-    dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
-    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
-    dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
-    dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
-    dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
-  };
-  
-  
-  const handleEditEvent = (event) => {
-    dispatch({ type: 'SET_EVENT_TO_EDIT', payload: event });
-    dispatch({ type: 'SET_EDITED_EVENT_TITLE', payload: event.title });
-    dispatch({ type: 'SET_EDITED_START_TIME', payload: event.time.split(' - ')[0] });
-    dispatch({ type: 'SET_EDITED_END_TIME', payload: event.time.split(' - ')[1] });
-    dispatch({ type: 'OPEN_EDIT_EVENT_FORM' });
-  };
-  
-
   const renderTimeOptions = () => {
     const timeOptions = [];
     for (let hour = 0; hour < 24; hour++) {
@@ -282,10 +215,10 @@ const Calendar = () => {
     dispatch({ type: 'SET_END_TIME', payload: '' });
   };
 
-  const handleSaveEditedEvent = () => {
-    dispatch({ type: 'CLOSE_EDIT_EVENT_FORM' });
+  const handleEditEvent = (event) => {
+    // Handle editing event
+    console.log('Editing event:', event);
   };
-  
 
   return (
     <div className='calendar_component'>
@@ -351,30 +284,6 @@ const Calendar = () => {
                 </div>
                 <div className="add-event-footer">
                   <button className="add-event-btn" onClick={handleSubmitEvent}>Add Event</button>
-                </div>
-              </div>
-            )}
-
-            {/* Edit event form modal */}
-            {showEditEventForm && (
-              <div className="edit-event-wrapper active">
-                <div className="edit-event-header">
-                  <div className="calendar_title">Edit Event</div>
-                  <div className="event_close" onClick={handleCloseEditEventForm}>✖</div>
-                </div>
-                <div className="edit-event-body">
-                  <input type="text" className='event_text' value={editedEventTitle} onChange={handleEditEventTitleChange} placeholder="Event Title" />
-                  <select className="event_text" value={editedStartTime} onChange={handleEditedStartTimeChange}>
-                    <option value="">Select Start Time</option>
-                    {renderTimeOptions()}
-                  </select>
-                  <select className="event_text" value={editedEndTime} onChange={handleEditedEndTimeChange}>
-                    <option value="">Select End Time</option>
-                    {renderTimeOptions()}
-                  </select>
-                </div>
-                <div className="edit-event-footer">
-                  <button className="save-edited-event-btn" onClick={handleSaveEditedEvent}>Save Changes</button>
                 </div>
               </div>
             )}
