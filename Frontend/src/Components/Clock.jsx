@@ -3,7 +3,7 @@ import '../Styles/Timer.css';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 
-export default function Timer() {
+export default function Clock() {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {
@@ -56,7 +56,7 @@ export default function Timer() {
               </div>
               <div className='timer_btns'>
                 <Link to='/stopwatch'><button className='timer_btn'>Stopwatch</button></Link>
-                <button className='timer_btn'>Timer</button>
+                <Link to='/timer'><button className='timer_btn'>Timer</button></Link>
               </div>
             </div>
           </div>
