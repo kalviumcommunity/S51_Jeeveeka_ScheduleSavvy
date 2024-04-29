@@ -7,7 +7,8 @@ import Layout from './Components/Layout'
 import ForgetPassword from './Components/ForgetPassword'
 import Feedback from './Components/Feedback'
 import AboutUs from './Components/AboutUs'
-import Timer from './Components/Timer'
+import Clock from './Components/Clock'
+import Stopwatch from './Components/Stopwatch'
 
 export default function AllRoutes() {
   return (
@@ -19,7 +20,8 @@ export default function AllRoutes() {
             <Route path='/forgetPassword' element={<ForgetPassword/>}></Route>
             <Route path='/feedback' element={<Feedback/>}></Route>
             <Route path='/aboutus' element={<AboutUs/>}></Route>
-            <Route path='/timer' element={<Timer/>}></Route>            
+            <Route path='/clock' element={<Clock/>}></Route>          
+            <Route path='/stopwatch' element={<Stopwatch/>}></Route>  
         </Routes>
     </div>
   )
