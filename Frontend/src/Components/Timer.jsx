@@ -12,20 +12,24 @@ export default function Timer() {
         if (!timerStarted) { // Check if timer has not been started yet
             const durationInput = prompt("Enter timer duration (in minutes):");
             if (durationInput !== null) {
-                const durationInMinutes = parseInt(durationInput);
-                if (!isNaN(durationInMinutes) && durationInMinutes > 0 && durationInMinutes <= 2000) {
-                    const remainingTime = timerDuration > 0 ? timerDuration : durationInMinutes * 60000;
-                    setTimerDuration(remainingTime);
-                    setTimerRunning(true);
-                    setTimerStarted(true); // Set timerStarted to true
-                } else {
-                    alert("Invalid input. Please enter a valid duration in minutes (not exceeding 2000 minutes).");
+                try {
+                    const durationInMinutes = parseInt(durationInput);
+                    if (!isNaN(durationInMinutes) && durationInMinutes > 0 && durationInMinutes <= 2000) {
+                        const remainingTime = timerDuration > 0 ? timerDuration : durationInMinutes * 60000;
+                        setTimerDuration(remainingTime);
+                        setTimerRunning(true);
+                        setTimerStarted(true); // Set timerStarted to true
+                    } else {
+                        alert("Invalid input. Please enter a valid duration in minutes (not exceeding 2000 minutes).");
+                    }
+                } catch (error) {
+                    alert("Error parsing input. Please enter a valid duration in minutes.");
                 }
             }
         } else {
             setTimerRunning(true); // If timer has been started, resume it without asking for input
         }
-    };       
+    };    
 
     const stopTimer = () => {
         setTimerRunning(false);
