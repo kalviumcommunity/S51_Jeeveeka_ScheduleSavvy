@@ -57,6 +57,7 @@ export default function Clock() {
               <div className='timer_btns'>
                 <Link to='/stopwatch'><button className='timer_btn'>Stopwatch</button></Link>
                 <Link to='/timer'><button className='timer_btn'>Timer</button></Link>
+                <Link to='/pomodoro'><button className='timer_btn'>Pomodoro</button></Link>
               </div>
             </div>
           </div>
