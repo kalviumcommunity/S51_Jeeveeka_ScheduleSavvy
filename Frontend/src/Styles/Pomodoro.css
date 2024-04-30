@@ -1,0 +1,143 @@
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.pomo_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pomo {
+  margin: 50px auto;
+  width: 300px;
+}
+
+.pomo_subtitle {
+  display: block;
+  margin: 0 0 15px;
+  font-size: 0.6em;
+  letter-spacing: 0.25em;
+}
+
+.pomo_session,
+.pomo_break {
+  padding: 5px 10px;
+  width: 140px;
+  color: #3e4348;
+  color: rgba(0, 0, 0, 0.35);
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.pomo_session {
+  float: left;
+}
+
+.pomo_break {
+  float: right;
+}
+
+.pomodoro {
+  position: relative;
+  margin: auto;
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  color: #3e4348;
+  text-align: center;
+  background: linear-gradient(to bottom, #fff, #d9d9d9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.pomo_title {
+  display: inline-block;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  padding: 10px;
+  background: #3e4348;
+  color: #fff;
+  font-size: 0.6em;
+  letter-spacing: 0.25em;
+}
+
+.pomo_status {
+  position: absolute;
+  top: 80px;
+  width: 100%;
+  color: #3e4348;
+  color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+}
+
+.pomo_timer {
+  padding-top: 110px;
+  font-size: 4em;
+}
+
+.pomo_button {
+  margin: 15px 5px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background: #fff;
+  color: #3e4348;
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.pomo_button:hover {
+  background: #3e4348;
+  color: #fff;
+}
+
+.pomo_button:focus {
+  outline: none;
+}
+
+.session {
+  border: 10px solid #9A7AF1;
+  background: #9A7AF1;
+  color: #fff;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+.break {
+  background: #e3dede;
+  border: 10px solid #fff;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 30px 0 rgba(255, 100, 100, 0.3);
+  }
+  to {
+    box-shadow: 0 0 50px 5px rgba(150, 0, 255, 0.7);
+  }
+}
+
+.pomo_back_button {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #9A7AF1;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 1em;
+  text-align: center;
+}
+
+.pomo_back_button:hover {
+  background-color: #7b5bc0;
+}

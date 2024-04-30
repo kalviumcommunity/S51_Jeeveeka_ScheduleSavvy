@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/Pomodoro.css'
+import { Link } from 'react-router-dom';
 
 export default function Pomodoro() {
   const [sessionMinutes, setSessionMinutes] = useState(25);
@@ -73,18 +74,18 @@ export default function Pomodoro() {
     <>
       <div className="pomo clearfix">
         <div className="pomo_session">
-          <span className="pomo_title">session</span>
+          <span className="pomo_subtitle">Session</span>
           <i className="fa fa-minus-circle" onClick={decrementSessionMinutes}></i> &nbsp; <span>{sessionMinutes}</span> &nbsp; <i className="fa fa-plus-circle" onClick={incrementSessionMinutes}></i>
         </div>
         <div className="pomo_break">
-          <span className="pomo_title">break</span>
+          <span className="pomo_subtitle">Break</span>
           <i className="fa fa-minus-circle" onClick={decrementBreakMinutes}></i> &nbsp; <span>{breakMinutes}</span> &nbsp; <i className="fa fa-plus-circle" onClick={incrementBreakMinutes}></i>
         </div>
       </div>
       <div className={`pomodoro ${status}`}>
-        <div className="title">POMODORO CLOCK</div>
-        <div className="status">{status}</div>
-        <div className="timer">
+        <div className="pomo_title">POMODORO CLOCK</div>
+        <div className="pomo_status">{status}</div>
+        <div className="pomo_timer">
             {status === 'session' ? (sessionMinutes < 10 ? `0${sessionMinutes}` : sessionMinutes) : (breakMinutes < 10 ? `0${breakMinutes}` : breakMinutes)}:
             {seconds < 10 ? `0${seconds}` : seconds}
         </div>
@@ -93,7 +94,9 @@ export default function Pomodoro() {
         <button className="pomo_button" id="reset" onClick={resetTimer}><i className="fa fa-refresh"></i></button>
         <button className="pomo_button" id="toggle" onClick={toggleTimer}><i className={`fa ${timeOn ? 'fa-pause' : 'fa-play'}`}></i></button>
       </div>
-      <button className='pomo_back_button'>BACK</button>
+      <div className='pomo_container'>
+        <Link to='/clock'><button className='pomo_back_button'>BACK</button></Link>
+      </div>
     </>
   );
 }
