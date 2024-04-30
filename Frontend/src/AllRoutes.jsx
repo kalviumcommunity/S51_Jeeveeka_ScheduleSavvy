@@ -10,6 +10,7 @@ import AboutUs from './Components/AboutUs'
 import Stopwatch from './Components/Stopwatch'
 import Timer from './Components/Timer'
 import Clock from './Components/Clock'
+import Pomodoro from './Components/Pomodoro'
 
 export default function AllRoutes() {
   return (
@@ -24,6 +25,7 @@ export default function AllRoutes() {
             <Route path='/clock' element={<Clock/>}></Route>          
             <Route path='/stopwatch' element={<Stopwatch/>}></Route>
             <Route path='/timer' element={<Timer/>}></Route>  
+            <Route path='/pomodoro' element={<Pomodoro/>}></Route>
         </Routes>
     </div>
   )
