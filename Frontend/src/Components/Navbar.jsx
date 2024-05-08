@@ -14,7 +14,7 @@ export default function Navbar() {
                 <input className='navbar_input' type="radio" name="slider" id="close-btn"/>
                 <ul className="nav-links">
                 <label htmlFor="close-btn" className="navbar_btn navbar_close-btn"><i className="fas fa-times"></i></label>
-                <li className='navbar_li'><h6 className='navbar_headers'>Calender</h6></li>
+                <Link to='/home'><li className='navbar_li'><h6 className='navbar_headers'>Calender</h6></li></Link>
                 <li className='navbar_li'><h6 className='navbar_headers'>Myself</h6></li>
                 <li className='navbar_li'>
                     <h6 id='navbar_res2' className='navbar_headers'>Features</h6>
@@ -29,7 +29,7 @@ export default function Navbar() {
                         <header className='nav_header'>All-In-One Organizer</header>
                         <ul className="mega-links">
                             <li className='navbar_li'><h6 className='navbar_headers'>Social Media Dashboard</h6></li>
-                            <li className='navbar_li'><h6 className='navbar_headers'>Timer</h6></li>
+                            <Link to='/clock'><li className='navbar_li'><h6 className='navbar_headers'>Timer</h6></li></Link>
                             <li className='navbar_li'><h6 className='navbar_headers'>Challenges</h6></li>
                             <li className='navbar_li'><h6 className='navbar_headers'>Motivation</h6></li>
                         </ul>
@@ -49,8 +49,8 @@ export default function Navbar() {
                     <input className='navbar_input' type="checkbox" id="showDrop"/>
                     <label htmlFor="showDrop" className="mobile-item">More Info</label>
                     <ul className="navbar_dropmenu">
-                    <li className='navbar_li'><Link to='/aboutus'><h6 className='navbar_headers'>About Us</h6></Link></li>
-                    <li className='navbar_li'><h6 className='navbar_headers'>Contact Us</h6></li>
+                    <Link to='/aboutus'><li className='navbar_li'><h6 className='navbar_headers'>About Us</h6></li></Link>
+                    <Link to='/contactus'><li className='navbar_li'><h6 className='navbar_headers'>Contact Us</h6></li></Link>
                     <Link to='/feedback'><li className='navbar_li'><h6 className='navbar_headers'>Feedback</h6></li></Link>
                     </ul>
                 </li>

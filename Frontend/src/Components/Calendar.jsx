@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import '../Styles/Calendar.css';
 
 const Calendar = () => {
@@ -216,7 +216,6 @@ const Calendar = () => {
   };
 
   const handleEditEvent = (event) => {
-    // Handle editing event
     console.log('Editing event:', event);
   };
 
