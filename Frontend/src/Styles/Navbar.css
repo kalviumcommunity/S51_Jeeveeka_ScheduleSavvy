@@ -9,6 +9,7 @@
 
 .navbar{
   position: fixed;
+  top: 0%;
   z-index: 99;
   width: 100%;
   background: #9A7AF1;
