@@ -1,0 +1,8 @@
+.calendar_container{
+    height: 500px;  
+    margin-top: 13vh; 
+}
+
+.calendar_component{
+    margin: 50px;
+}

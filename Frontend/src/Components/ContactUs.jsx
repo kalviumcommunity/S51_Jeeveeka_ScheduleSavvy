@@ -13,16 +13,12 @@ export default function ContactUs() {
         </div>
         <div className="contact-info">
           <div className="contact-info-item">
-            <strong>Address:</strong>
-            <p>123 Main Street,Chennai,India</p>
-          </div>
-          <div className="contact-info-item">
             <strong>Phone:</strong>
             <p>+91 9498330845</p>
           </div>
           <div className="contact-info-item">
             <strong>Email:</strong>
-            <p>jeeveemonee@gmail.com</p>
+            <p>jeeveekawork@gmail.com</p>
           </div>
           <div className="contact-info-item">
             <strong>Website:</strong>
