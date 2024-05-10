@@ -21,42 +21,48 @@ const CalendarComp = () => {
   };
 
   const handleSelectedEvent = (event) => {
-    setShowModal(true)
-    setSelectEvent(event)
-    setEventTitle(event.title)
-  }
+    setShowModal(true);
+    setSelectEvent(event);
+    setEventTitle(event.title);
+  };
 
   const saveEvent = () => {
-    if (eventTitle && selectedDate){
-      if (selectEvent){
-        const updatedEvent = {...selectEvent,title: eventTitle};
+    if (eventTitle && selectedDate) {
+      if (selectEvent) {
+        const updatedEvent = { ...selectEvent, title: eventTitle };
         const updatedEvents = events.map((event) =>
-          event === selectEvent ? updatedEvent: event
-        )
-        setEvents(updatedEvents)
-      }else {
+          event === selectEvent ? updatedEvent : event
+        );
+        setEvents(updatedEvents);
+      } else {
         const newEvent = {
-                title: eventTitle,
-                start: selectedDate,
-                end: moment(selectedDate).add(1, 'hours').toDate(),
-              };
-              setEvents([...events, newEvent]);
+          title: eventTitle,
+          start: selectedDate,
+          end: moment(selectedDate).add(1, 'hours').toDate(),
+        };
+        setEvents([...events, newEvent]);
       }
       setShowModal(false);
-      setEventTitle("");
-      setSelectEvent(null)
+      setEventTitle('');
+      setSelectEvent(null);
     }
-  }
+  };
+
+  const deleteEvents = () => {
+    if (selectEvent) {
+      const updatedEvents = events.filter((event) => event !== selectEvent);
+      setEvents(updatedEvents);
+      setShowModal(false);
+      setEventTitle('');
+      setSelectEvent(null);
+    }
+  };
 
   const eventStyleGetter = (event, start, end, isSelected) => {
     const backgroundColor = '#9A7AF1';
     const style = {
       backgroundColor,
       borderRadius: '5px',
-      opacity: 0.8,
-      color: 'white',
-      border: 'none',
-      display: 'block',
     };
     return {
       style: style,
@@ -74,9 +80,9 @@ const CalendarComp = () => {
           endAccessor='end'
           className='calendar_component'
           selectable={true}
+          onSelectEvent={handleSelectedEvent}
           onSelectSlot={handleSelectSlot}
           eventPropGetter={eventStyleGetter}
-          onSelectEvent={handleSelectedEvent}
         />
         {showModal && (
           <div className='calendar_modal_overlay'>
@@ -90,6 +96,9 @@ const CalendarComp = () => {
                   setEventTitle('') 
                   setSelectEvent(null)
                   }}>Cancel</button>
+                {selectEvent && (
+                  <button type='button' id='calendar_modal_delete' onClick={deleteEvents}>Delete Event</button>
+                )}
               </div>
             </div>
           </div>
