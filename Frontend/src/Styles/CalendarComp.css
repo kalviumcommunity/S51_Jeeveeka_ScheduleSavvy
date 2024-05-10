@@ -7,3 +7,53 @@
     margin: 50px;
 }
 
+.calendar_modal_overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.calendar_modal{
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar_modal h2{
+  margin-bottom: 10px;
+}
+
+.calendar_modal input{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.calendar_modal_buttons{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.calendar_modal_buttons button{
+  padding: 8px 16px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #9A7AF1;
+  color: white;
+  cursor: pointer;
+}
+
+.calendar_modal_buttons button:hover{
+  background-color: #010851;
+}
