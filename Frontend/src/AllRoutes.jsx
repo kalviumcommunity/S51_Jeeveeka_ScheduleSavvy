@@ -12,6 +12,7 @@ import Timer from './Components/Timer'
 import Clock from './Components/Clock'
 import Pomodoro from './Components/Pomodoro'
 import ContactUs from './Components/ContactUs'
+import CrispChat from './Components/Chat'
 
 export default function AllRoutes() {
   return (
@@ -28,6 +29,7 @@ export default function AllRoutes() {
             <Route path='/timer' element={<Timer/>}></Route>  
             <Route path='/pomodoro' element={<Pomodoro/>}></Route>
             <Route path='/contactus' element={<ContactUs/>}></Route>
+            <Route path='/chat' element={<CrispChat/>}></Route>
         </Routes>
     </div>
   )
