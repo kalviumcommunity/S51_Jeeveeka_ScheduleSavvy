@@ -13,6 +13,7 @@ import Clock from './Components/Clock'
 import Pomodoro from './Components/Pomodoro'
 import ContactUs from './Components/ContactUs'
 import CrispChat from './Components/Chat'
+import Themes from './Components/Themes'
 
 export default function AllRoutes() {
   return (
@@ -30,6 +31,7 @@ export default function AllRoutes() {
             <Route path='/pomodoro' element={<Pomodoro/>}></Route>
             <Route path='/contactus' element={<ContactUs/>}></Route>
             <Route path='/chat' element={<CrispChat/>}></Route>
+            <Route path='/theme' element={<Themes/>}></Route>
         </Routes>
     </div>
   )

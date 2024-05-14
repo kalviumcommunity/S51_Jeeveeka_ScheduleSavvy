@@ -5,7 +5,7 @@ const CrispChat = () => {
     window.$crisp = [];
     window.CRISP_WEBSITE_ID = "08e66982-aacb-4313-9478-4cb4a760b73c";
 
-    (function () {
+    (function (){
       const d = document;
       const s = d.createElement("script");
       s.src = "https://client.crisp.chat/l.js";
