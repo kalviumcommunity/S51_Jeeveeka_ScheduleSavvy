@@ -1,0 +1,67 @@
+.theme_options {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: right;
+  padding: 20px 0;
+}
+
+.theme_options > div {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin: 2px 10px;
+  border: 1px solid white;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.theme_options > div.active {
+  opacity: 1;
+}
+
+#theme_white{
+    background-color: #eee;
+}
+
+#theme_blue{
+    background-color: #1e41c1;
+}
+
+#theme_orange{
+    background-color: #b64b1e;
+}
+
+#theme_purple{
+    background-color: #7852ae;
+}
+
+#theme_green{
+    background-color: #5faf3b;
+}
+
+#theme_black{
+    background-color: black;
+}
+
+.theme_container.theme_blue{
+    background-color: #bec7e7;
+}
+
+.theme_container.theme_orange{
+    background-color: #f4c9b7;
+}
+
+.theme_container.theme_purple{
+    background-color: #d0b7f4;
+}
+
+.theme_container.theme_green{
+    background-color: #e2f6e1;
+}
+
+.theme_container.theme_black{
+    background-color: #5c5c5c;
+    color: white;
+}
+
