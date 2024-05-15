@@ -1,0 +1,20 @@
+meta {
+  name: post
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:3000/posttask
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id":1,
+    "event":"eat",
+    "start":"2022-10-02",
+    "end":"2022-11-03"
+  }
+}
