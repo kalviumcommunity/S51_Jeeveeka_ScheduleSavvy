@@ -4,14 +4,14 @@ const cors=require("cors")
 const app = express()
 const mongoose = require("mongoose");
 const {connectdb, isConnectedNow}=require('./Config/dbConn.js')
-const {getRouter, postRouter, deleteRouter, putRouter} = require("./Routes/ScheduleSavvy.routes.js");
+const {getRouter, postRouter, deleteRouter, patchRouter} = require("./Routes/ScheduleSavvy.routes.js");
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 
 app.use("/",getRouter)
 app.use("/",postRouter)
 app.use("/",deleteRouter)
-app.use("/",putRouter)
+app.use("/",patchRouter)
 
 app.get("/ping",(req,res)=>{
     res.send("Hello,This is Jeeveeka")
