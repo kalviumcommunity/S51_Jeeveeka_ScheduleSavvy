@@ -21,4 +21,5 @@ For any inquiries or feedback, please contact us at jeeveekawork@gmail.com.
 
 ### Deployed Links
 
-https://schedulesavvy7.netlify.app
+Frontend: https://schedulesavvy7.netlify.app
+Backend: https://s51-jeeveeka-schedulesavvy.onrender.com/home

@@ -5,7 +5,6 @@ import Banner from './Banner'
 import TitleFeatures from './TitleFeatures'
 import TitleAbout from './TitleAbout'
 import Footer from './Footer'
-import CrispChat from './Chat'
 
 export default function TitlePage() {
   return (
@@ -17,7 +16,6 @@ export default function TitlePage() {
       <TitleFeatures/>
       <TitleAbout/>
       <Footer/>
-      <CrispChat/>
     </>
   )
 }
