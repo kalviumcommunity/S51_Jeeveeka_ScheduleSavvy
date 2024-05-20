@@ -5,9 +5,9 @@
 }
 
 .pomo_container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pomo {
@@ -26,8 +26,6 @@
 .pomo_break {
   padding: 5px 10px;
   width: 140px;
-  color: #3e4348;
-  color: rgba(0, 0, 0, 0.35);
   font-size: 1.5em;
   text-align: center;
 }
