@@ -5,7 +5,13 @@ meta {
 }
 
 patch {
-  url: http://localhost:3000/updatetask
-  body: none
+  url: http://localhost:3000/updatetask/1
+  body: json
   auth: none
+}
+
+body:json {
+  {
+    "event":"songs"
+  }
 }
