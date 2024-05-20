@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const taskSchema = new Schema({
   ID: {
     type: Number,
-    required: false
+    required: true
   },
   event: {
     type: String,

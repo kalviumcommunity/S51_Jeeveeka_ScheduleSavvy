@@ -17,7 +17,7 @@ ScheduleSavvy is a comprehensive productivity platform designed to help users or
 
 ### Contact
 
-For any inquiries or feedback, please contact us at jeeveemonee@gmail.com.
+For any inquiries or feedback, please contact us at jeeveekawork@gmail.com.
 
 ### Deployed Links
 

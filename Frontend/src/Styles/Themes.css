@@ -1,3 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.theme_container {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .theme_options {
   max-width: 800px;
   margin: 0 auto;
@@ -20,48 +41,56 @@
   opacity: 1;
 }
 
-#theme_white{
-    background-color: #eee;
+#theme_white {
+  background-color: #eee;
 }
 
-#theme_blue{
-    background-color: #1e41c1;
+#theme_blue {
+  background-color: #1e41c1;
 }
 
-#theme_orange{
-    background-color: #b64b1e;
+#theme_orange {
+  background-color: #b64b1e;
 }
 
-#theme_purple{
-    background-color: #7852ae;
+#theme_purple {
+  background-color: #7852ae;
 }
 
-#theme_green{
-    background-color: #5faf3b;
+#theme_green {
+  background-color: #5faf3b;
 }
 
-#theme_black{
-    background-color: black;
+#theme_black {
+  background-color: black;
 }
 
-.theme_container.theme_blue{
-    background-color: #bec7e7;
+.theme_container.theme_white {
+  --background-color: #fff;
+  --text-color: #000;
 }
 
-.theme_container.theme_orange{
-    background-color: #f4c9b7;
+.theme_container.theme_blue {
+  --background-color: #bec7e7;
+  --text-color: #000;
 }
 
-.theme_container.theme_purple{
-    background-color: #d0b7f4;
+.theme_container.theme_orange {
+  --background-color: #f4c9b7;
+  --text-color: #000;
 }
 
-.theme_container.theme_green{
-    background-color: #e2f6e1;
+.theme_container.theme_purple {
+  --background-color: #d0b7f4;
+  --text-color: #000;
 }
 
-.theme_container.theme_black{
-    background-color: #5c5c5c;
-    color: white;
+.theme_container.theme_green {
+  --background-color: #e2f6e1;
+  --text-color: #000;
 }
 
+.theme_container.theme_black {
+  --background-color: #5c5c5c;
+  --text-color: #fff;
+}

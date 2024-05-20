@@ -1,5 +1,4 @@
 .contact-container {
-  background-color: #9a7af1;
   overflow: hidden;
   position: fixed;
   width: 100%;
@@ -11,7 +10,7 @@
 }
 
 .contact-background {
-  background-color: white;
+  background-color: #9a7af1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,10 +44,10 @@
   top: 10px;
   left: 20px;
   padding: 10px;
-  background-color: #fff;
+  background-color: #9a7af1;
   border: none;
   border-radius: 5px;
-  color: #9a7af1;
+  color: white;
   font-weight: bold;
   cursor: pointer;
 }
