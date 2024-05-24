@@ -1,50 +1,49 @@
 import React, { useState, useEffect } from 'react';
 import '../Styles/Challenges.css';
-import selfcareImage from '../assets/selfcare.jpg';
+import creativityImage from '../assets/creativity.jpg';
 import { db } from '../Firebase/Firebase.config';
 import { collection, doc, getDoc, setDoc, getDocs } from 'firebase/firestore';
 
 const tasks = [
-  'Meditate for 10 minutes',
-  'Take a nature walk',
-  'Write in a journal',
-  'Do a yoga session',
-  'Read a book for 30 minutes',
-  'Cook a healthy meal',
-  'Call a friend or family member',
-  'Practice deep breathing exercises',
-  'Spend time on a hobby',
-  'Declutter a small space',
-  'Take a long bath',
-  'Listen to your favorite music',
-  'Go to bed early',
-  'Drink 8 glasses of water',
-  'Spend time in the sun',
-  'Do a digital detox',
-  'Practice gratitude',
-  'Try a new recipe',
-  'Do a random act of kindness',
-  'Watch a feel-good movie',
-  'Stretch for 15 minutes',
-  'Write down your goals',
-  'Spend time with pets',
-  'Plan a fun outing',
-  'Do something creative',
-  'Take a nap',
-  'Limit screen time',
-  'Practice positive affirmations',
-  'Spend time gardening',
-  'Reflect on your achievements'
+    'Tidy your workspace',
+    'Take a different route',
+    'Read a nonfiction book',
+    'Start a dream journal',
+    'Go to bed earlier',
+    'Watch a film',
+    'Try a new cuisine',
+    'Listen to classical music',
+    'Plan a holiday',
+    'Practice yoga',
+    'Try a DIY Project',
+    'Watch the sunrise',
+    'No phone day',
+    'Self core day',
+    'Try a DIY Project',
+    'Go out in nature',
+    'Read a book',
+    'Explore a new city',
+    'Go outside your comfort zone',
+    'Make moodboard',
+    'Go to bed earlier',
+    'Start a new hobby',
+    'Make time for exercise',
+    'Read a newspaper',
+    'Watch the sunset',
+    'Visit a museum',
+    'Learn a new skill',
+    'Create your ideal future',
+    'Do nothing',
+    'Cook a new dish'
 ];
 
-const SelfCareChallenge = () => {
+const CreativityChallenge = () => {
   const [completedDays, setCompletedDays] = useState(new Array(30).fill(false));
   const completedCount = completedDays.filter(day => day).length;
 
   useEffect(() => {
-    // Fetch initial state from Firestore
     const fetchData = async () => {
-      const docRef = doc(db, 'selfCareChallenge', 'userChallenge');
+      const docRef = doc(db, 'CreativityChallenge', 'userChallenge');
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setCompletedDays(docSnap.data().completedDays);
@@ -58,7 +57,7 @@ const SelfCareChallenge = () => {
     setCompletedDays(newCompletedDays);
 
     // Update Firestore
-    await setDoc(doc(db, 'selfCareChallenge', 'userChallenge'), {
+    await setDoc(doc(db, 'CreativityChallenge', 'userChallenge'), {
       completedDays: newCompletedDays
     });
   };
@@ -68,7 +67,7 @@ const SelfCareChallenge = () => {
     setCompletedDays(newCompletedDays);
 
     // Update Firestore
-    await setDoc(doc(db, 'selfCareChallenge', 'userChallenge'), {
+    await setDoc(doc(db, 'CreativityChallenge', 'userChallenge'), {
       completedDays: newCompletedDays
     });
   };
@@ -76,7 +75,7 @@ const SelfCareChallenge = () => {
   return (
     <div className="container">
       <div className="header">
-        <h1>30 Day Self-Care Challenge</h1>
+        <h1>30 Day Creativity Challenge</h1>
         <div className="buttons">
           <button onClick={resetChallenge}>Reset</button>
           <button>Back</button>
@@ -87,9 +86,9 @@ const SelfCareChallenge = () => {
           <div className="progress-box">
             <p>Challenges Completed: {completedCount}</p>
             <p>Days to Go: {30 - completedCount}</p>
-            <p>"Keep going, you're doing great!"</p>
+            <p>"Creativity is intelligence having fun!"</p>
           </div>
-          <img src={selfcareImage} alt="Self Care" />
+          <img src={creativityImage} alt="Creativity" />
         </div>
         <div className="challenge-container">
           {completedDays.map((completed, index) => (
@@ -111,4 +110,4 @@ const SelfCareChallenge = () => {
   );
 };
 
-export default SelfCareChallenge;
+export default CreativityChallenge;
