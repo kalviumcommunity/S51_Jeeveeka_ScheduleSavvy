@@ -65,7 +65,7 @@
 }
 
 .left-section img {
-  max-width: 200px; 
+  width: 250px; 
   border-radius: 10px;
   margin-top: 10vh;
   height: 40vh;
@@ -73,7 +73,7 @@
 
 .challenge-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns */
+  grid-template-columns: repeat(5, 1fr); 
   gap: 10px;
 }
 
