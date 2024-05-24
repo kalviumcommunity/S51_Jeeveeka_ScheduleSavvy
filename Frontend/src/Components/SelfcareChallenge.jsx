@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../Styles/SelfcareChallenge.css';
 import selfcareImage from '../assets/selfcare.jpg';
+import { db } from '../Firebase/Firebase.config';
+import { collection, doc, getDoc, setDoc, getDocs } from 'firebase/firestore';
 
 const tasks = [
   'Meditate for 10 minutes',
@@ -39,14 +41,36 @@ const SelfCareChallenge = () => {
   const [completedDays, setCompletedDays] = useState(new Array(30).fill(false));
   const completedCount = completedDays.filter(day => day).length;
 
-  const toggleDay = (index) => {
-    setCompletedDays((prev) =>
-      prev.map((day, i) => (i === index ? !day : day))
-    );
+  useEffect(() => {
+    // Fetch initial state from Firestore
+    const fetchData = async () => {
+      const docRef = doc(db, 'selfCareChallenge', 'userChallenge');
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setCompletedDays(docSnap.data().completedDays);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const toggleDay = async (index) => {
+    const newCompletedDays = completedDays.map((day, i) => (i === index ? !day : day));
+    setCompletedDays(newCompletedDays);
+
+    // Update Firestore
+    await setDoc(doc(db, 'selfCareChallenge', 'userChallenge'), {
+      completedDays: newCompletedDays
+    });
   };
 
-  const resetChallenge = () => {
-    setCompletedDays(new Array(30).fill(false));
+  const resetChallenge = async () => {
+    const newCompletedDays = new Array(30).fill(false);
+    setCompletedDays(newCompletedDays);
+
+    // Update Firestore
+    await setDoc(doc(db, 'selfCareChallenge', 'userChallenge'), {
+      completedDays: newCompletedDays
+    });
   };
 
   return (
