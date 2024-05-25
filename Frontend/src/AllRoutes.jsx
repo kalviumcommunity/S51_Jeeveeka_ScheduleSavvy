@@ -15,6 +15,8 @@ import ContactUs from './Components/ContactUs'
 import CrispChat from './Components/Chat'
 import Themes from './Components/Themes'
 import Chatbot from './Components/Chatbot'
+import SelfCareChallenge from './Components/SelfcareChallenge'
+import CreativityChallenge from './Components/CreativityChallenge'
 
 export default function AllRoutes() {
   return (

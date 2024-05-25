@@ -1,0 +1,132 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin-left:35vw ;
+  font-size: 24px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 10px;
+  background-color: #9A7AF1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  background-color: #7A5AF1;
+}
+
+.content {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.progress-box {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../assets/backgroundChallenge.webp"); 
+}
+
+.left-section img {
+  width: 250px; 
+  border-radius: 10px;
+  margin-top: 10vh;
+  height: 40vh;
+}
+
+.challenge-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 10px;
+}
+
+.challenges-day-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px; /* Smaller boxes */
+  height: 100px; /* Ensure boxes are square */
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #EE9AE5;
+  color: black;
+  text-align: center;
+  position: relative; /* Needed for tick mark positioning */
+}
+
+.challenges-day-box.completed {
+  background-color: #9A7AF1;
+  color: #fff;
+  font-weight: bold;
+}
+
+.challenges-day-box.completed .challenge-tick-mark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px; /* Adjusted font size for tick mark */
+  color: rgba(255, 255, 255, 0.5); /* Transparent tick mark */
+}
+
+.challenges-day-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.challenges-day-number {
+  font-size: 18px; /* Slightly smaller number font */
+  font-weight: bold;
+}
+
+.challenges-day-task {
+  font-size: 12px; /* Smaller task font */
+  margin-top: 5px;
+}
+
+.challenge-tick-mark {
+  font-size: 24px;
+  color: #fff;
+  margin-top: 10px;
+}
