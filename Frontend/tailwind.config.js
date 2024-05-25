@@ -6,7 +6,8 @@ export default {
     './src/Components/Banner.jsx',
     './src/Components/TitleAbout.jsx',
     './src/Components/TitleFeatures.jsx',
-    './src/Components/ForgetPassword.jsx'
+    './src/Components/ForgetPassword.jsx',
+    './src/Components/Chatbot.jsx'
   ],
   theme: {
     extend: {

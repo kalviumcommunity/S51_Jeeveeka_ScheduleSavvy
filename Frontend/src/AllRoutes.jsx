@@ -14,6 +14,7 @@ import Pomodoro from './Components/Pomodoro'
 import ContactUs from './Components/ContactUs'
 import CrispChat from './Components/Chat'
 import Themes from './Components/Themes'
+import Chatbot from './Components/Chatbot'
 import SelfCareChallenge from './Components/SelfcareChallenge'
 import CreativityChallenge from './Components/CreativityChallenge'
 
@@ -34,8 +35,7 @@ export default function AllRoutes() {
             <Route path='/contactus' element={<ContactUs/>}></Route>
             <Route path='/chat' element={<CrispChat/>}></Route>
             <Route path='/theme' element={<Themes/>}></Route>
-            <Route path='/selfcare' element={<SelfCareChallenge/>}></Route>
-            <Route path='/creativity' element={<CreativityChallenge/>}></Route>
+            <Route path='/chatbot' element={<Chatbot/>} ></Route>
         </Routes>
     </div>
   )
