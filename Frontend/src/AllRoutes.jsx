@@ -36,6 +36,9 @@ export default function AllRoutes() {
             <Route path='/chat' element={<CrispChat/>}></Route>
             <Route path='/theme' element={<Themes/>}></Route>
             <Route path='/chatbot' element={<Chatbot/>} ></Route>
+            <Route path='/selfcare' element={<SelfCareChallenge/>} ></Route>
+            <Route path='/creativity' element={<CreativityChallenge/>} ></Route>
+
         </Routes>
     </div>
   )
