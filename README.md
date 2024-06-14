@@ -11,7 +11,7 @@ ScheduleSavvy is a comprehensive productivity platform designed to help users or
 - Gamified Task Completion: Earn rewards, badges, and achievements as you complete tasks and reach milestones.
 - Social Media Integration: Stay connected with seamless integration with popular social media platforms and track your usage of social media.
 - Collaborative Tools: Collaborate with teams, share tasks, and track progress together in real-time.
-- Habit Tracking: Build positive habits and track your progress over time with insightful analytics.
+- Habit Building: Build positive habits over time.
 - Time Tracking: Monitor your time spent on tasks and analyze your productivity patterns.
 - Cross-Platform Compatibility: Access ScheduleSavvy from any device, including web browsers, mobile apps, and desktop applications.
 
@@ -21,5 +21,8 @@ For any inquiries or feedback, please contact us at jeeveekawork@gmail.com.
 
 ### Deployed Links
 
-Frontend: https://schedulesavvy7.netlify.app
-Backend: https://s51-jeeveeka-schedulesavvy.onrender.com/home
+Frontend: 
+https://schedulesavvy7.netlify.app
+
+Backend: 
+https://s51-jeeveeka-schedulesavvy.onrender.com/home
