@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const {connectdb, isConnectedNow}=require('./Config/dbConn.js')
 const {getRouter, postRouter, deleteRouter, patchRouter} = require("./Routes/ScheduleSavvy.routes.js");
-// const ChatbotRouter = require("./Chatbot/Chatbot.js");
 app.use(cors({ credentials: true, origin: true }));
 app.use(express.json());
 
@@ -14,7 +13,6 @@ app.use("/",getRouter)
 app.use("/",postRouter)
 app.use("/",deleteRouter)
 app.use("/",patchRouter)
-// app.use("/", ChatbotRouter)
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEN_AI_KEY);
 
