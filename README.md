@@ -9,7 +9,7 @@ ScheduleSavvy is a comprehensive productivity platform designed to help users or
 - Task Management: Organize your tasks with ease, set deadlines, and prioritize your to-do list.
 - Customizable Themes: Personalize your planner with a variety of themes, colors, and fonts.
 - Gamified Task Completion: Earn rewards, badges, and achievements as you complete tasks and reach milestones.
-- Social Media Integration: Stay connected with seamless integration with popular social media platforms and track your usage of social media.
+- Forum: Stay connected with your friends pursuing your same goals and support each other
 - Collaborative Tools: Collaborate with teams, share tasks, and track progress together in real-time.
 - Habit Building: Build positive habits over time.
 - Time Tracking: Monitor your time spent on tasks and analyze your productivity patterns.
