@@ -16,22 +16,12 @@ function Footer() {
                     <p className='footer-text'>Phone: +91 9498407843</p>
                 </div>
 
-                <div className="footer-navigation">
-                    <h3 className='footer-title'>Navigation</h3>
-                    <ul className="footer-links">
-                        <li><a className='footer-link' href="#home">Home</a></li>
-                        <li><a className='footer-link' href="#about">About</a></li>
-                        <li><a className='footer-link' href="#services">Services</a></li>
-                        <li><a className='footer-link' href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-
                 <div className="footer-follow">
                     <h3 className='footer-title'>Follow Us</h3>
                     <ul className="footer-social-links">
-                        <li><a className='footer-social-link' href="#facebook"><i className="fab fa-facebook-f"></i></a></li>
-                        <li><a className='footer-social-link' href="#twitter"><i className="fab fa-twitter"></i></a></li>
-                        <li><a className='footer-social-link' href="#instagram"><i className="fab fa-instagram"></i></a></li>
+                        <li><a className='footer-social-link' href="#facebook"><i className="fab fa-facebook-f"></i> Facebook</a></li>
+                        <li><a className='footer-social-link' href="#twitter"><i className="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a className='footer-social-link' href="#instagram"><i className="fab fa-instagram"></i> Instagram</a></li>
                     </ul>
                 </div>
             </div>

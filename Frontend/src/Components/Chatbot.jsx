@@ -3,6 +3,7 @@ import ReactMarkdown from "react-markdown";
 import Prism from "prismjs";
 import "prismjs/themes/prism.css"; // Import PrismJS CSS
 import CodeResponse from "./CodeResponse"; 
+import Navbar from "./Navbar";
 
 
 const Chatbot = () => {
@@ -79,9 +80,11 @@ const Chatbot = () => {
 
   // Render the Gemini chatbot component
   return (
-    <div className="max-w-2xl mx-auto py-8">
+    <>
+    <Navbar/>
+    <div className="max-w-2xl mx-auto py-20">
       {/* Header */}
-      <h1 className="text-3xl font-bold text-blue-500 mb-4">Gemini Chatbot</h1>
+      <h1 className="text-3xl font-bold text-purple-500 mb-4">Gemini Chatbot</h1>
 
       {/* Textarea and Action Buttons */}
       <div className="mb-4">
@@ -142,6 +145,7 @@ const Chatbot = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

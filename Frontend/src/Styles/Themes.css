@@ -21,48 +21,68 @@ body {
 
 .theme_options {
   max-width: 800px;
-  margin: 0 auto;
-  text-align: right;
-  padding: 20px 0;
+  margin-top: 15vh;
+  margin-left: 20vw;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
-.theme_options > div {
+.theme_option {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
   cursor: pointer;
-  width: 20px;
-  height: 20px;
-  border-radius: 4px;
-  margin: 2px 10px;
-  border: 1px solid white;
-  display: inline-block;
-  opacity: 0.5;
+  border-radius: 10px;
+  border: 2px solid white;
+  position: relative;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.8;
 }
 
-.theme_options > div.active {
+.theme_option:hover {
+  transform: scale(1.05);
   opacity: 1;
+}
+
+.theme_option.active {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.theme_name {
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 
 #theme_white {
   background-color: #eee;
+  color: black;
 }
 
 #theme_blue {
-  background-color: #1e41c1;
+  background-color: #bec7e7;
 }
 
 #theme_orange {
-  background-color: #b64b1e;
+  background-color: #f4c9b7;
 }
 
 #theme_purple {
-  background-color: #7852ae;
+  background-color: #d0b7f4;
 }
 
 #theme_green {
-  background-color: #5faf3b;
+  background-color: #e2f6e1;
 }
 
 #theme_black {
-  background-color: black;
+  background-color: #5c5c5c;
 }
 
 .theme_container.theme_white {

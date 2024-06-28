@@ -1,0 +1,23 @@
+meta {
+  name: forumAuth
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://localhost:3000/auth/register
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstName":"jeevz",
+    "lastName":"ps",
+    "email":"jeeve@gmail.com",
+    "password":"starlight",
+    "location":"chennai",
+    "occupation":"student"
+  }
+  
+}

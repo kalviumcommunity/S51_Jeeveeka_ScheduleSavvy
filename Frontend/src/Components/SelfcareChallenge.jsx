@@ -3,6 +3,7 @@ import '../Styles/Challenges.css';
 import selfcareImage from '../assets/selfcare.jpg';
 import { db } from '../Firebase/Firebase.config';
 import { collection, doc, getDoc, setDoc, getDocs } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
 
 const tasks = [
   'Meditate for 10 minutes',
@@ -79,7 +80,7 @@ const SelfCareChallenge = () => {
         <h1>30 Day Self-Care Challenge</h1>
         <div className="buttons">
           <button onClick={resetChallenge}>Reset</button>
-          <button>Back</button>
+          <Link to='/challenges'><button>Back</button></Link>
         </div>
       </div>
       <div className="content">
