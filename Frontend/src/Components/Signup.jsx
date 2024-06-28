@@ -14,10 +14,29 @@ const Signup = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [username, setUsername] = useState('');
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
 
     // Handle signup
     const onSubmitSignup = async (e) => {
         e.preventDefault();
+
+        // Check if all fields are filled
+        if (!username || !email || !password) {
+            toast.error('Please fill in all the fields.');
+            return;
+        }
+
+        // Check if password is greater than 3 characters
+        if (password.length <= 3) {
+            toast.error('Password should be greater than 3 characters.');
+            return;
+        }
+
         try {
             // Create a new user account
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -26,8 +45,14 @@ const Signup = () => {
             // Send email verification
             await sendEmailVerification(user);
             toast.info('Verification email sent. Please check your inbox.');
+            
+            // Clear the fields
+            setEmail('');
+            setPassword('');
+            setUsername('');
+
             // Redirect to login page
-            window.reload()
+            setIsSignUpMode(false);
         } catch (error) {
             // Handle signup errors
             console.error('Error during signup:', error);
@@ -40,7 +65,15 @@ const Signup = () => {
         e.preventDefault();
         try {
             // Sign in the user
-            await signInWithEmailAndPassword(auth, email, password);
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            // Check if email is verified
+            if (!user.emailVerified) {
+                toast.error('Please verify your email before signing in.');
+                return;
+            }
+
             toast.success('Successfully signed in!');
             // Redirect to a different page after successful sign-in (e.g., home page)
             navigate('/home');
@@ -51,30 +84,30 @@ const Signup = () => {
         }
     };
 
-    const googleAuth =()=>{
+    const googleAuth = async () => {
         const provider = new GoogleAuthProvider();
         try {
-          const result = signInWithPopup(auth, provider);
-          console.log(result);
-          const isNewUser = result.additionalUserInfo?.isNewUser;
-          if (isNewUser) {
-            toast.success('Thank you for signing up! A verification email has been sent.');
-            sendEmailVerification(result.user);
-          } else {
-            toast.success('Welcome to Schedule Savvy !');
-          }
+            const result = await signInWithPopup(auth, provider);
+            console.log(result);
+            const isNewUser = result.additionalUserInfo?.isNewUser;
+            if (isNewUser) {
+                toast.success('Thank you for signing up! A verification email has been sent.');
+                sendEmailVerification(result.user);
+            } else {
+                toast.success('Welcome to Schedule Savvy!');
+            }
         } catch (error) {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-      
-          if (errorCode === 'auth/email-already-in-use') {
-            toast.error('The email address is already in use by another account.');
-          } else {
-            toast.error(errorMessage);
-          }
-          console.error(error);
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            if (errorCode === 'auth/email-already-in-use') {
+                toast.error('The email address is already in use by another account.');
+            } else {
+                toast.error(errorMessage);
+            }
+            console.error(error);
         }
-    }
+    };
 
     return (
         <div id='signup_container'>
@@ -88,7 +121,8 @@ const Signup = () => {
                         </div>
                         <div className="input-field">
                             <i className="fas fa-lock" />
-                            <input className='signup_input' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            <input className='signup_input' type={passwordVisible ? 'text' : 'password'} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            <i className={`fas ${passwordVisible ? 'fa-eye-slash' : 'fa-eye'}`} onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }} />
                         </div>
                         <Link to="/forgetPassword"><p id='forget_pswd'>Forgot password?</p></Link>
                         <input type="submit" value="Login" className="btn" />
@@ -108,7 +142,7 @@ const Signup = () => {
                         <h2 className="title">Sign up</h2>
                         <div className="input-field">
                             <i className="fas fa-user" />
-                            <input className='signup_input' type="text" placeholder="Username" />
+                            <input className='signup_input' type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
                         </div>
                         <div className="input-field">
                             <i className="fas fa-envelope" />
@@ -116,7 +150,8 @@ const Signup = () => {
                         </div>
                         <div className="input-field">
                             <i className="fas fa-lock" />
-                            <input className='signup_input' type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            <input className='signup_input' type={passwordVisible ? 'text' : 'password'} placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+                            <i className={`fas ${passwordVisible ? 'fa-eye-slash' : 'fa-eye'}`} onClick={togglePasswordVisibility} style={{ cursor: 'pointer' }} />
                         </div>
                         <input type="submit" value="Sign up" className="btn" />
                         <p className="social-text">Or</p>

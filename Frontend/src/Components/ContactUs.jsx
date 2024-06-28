@@ -1,12 +1,13 @@
 import React from 'react';
 import contactImage from '../assets/contact_us_image.jpg';
 import '../Styles/ContactUs.css';
-import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 export default function ContactUs() {
   return (
+    <>
+    <Navbar/>
     <div className="contact-container">
-      <Link to='/home'><button className='contact-back'>Back</button></Link>
       <div className='contact-background'>
         <div>
           <img className="contact-image" src={contactImage} alt="contact_us" />
@@ -27,5 +28,6 @@ export default function ContactUs() {
         </div>
       </div>
     </div>
+    </>
   );
 }

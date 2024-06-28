@@ -15,7 +15,7 @@ export default function Navbar() {
                 <ul className="nav-links">
                 <label htmlFor="close-btn" className="navbar_btn navbar_close-btn"><i className="fas fa-times"></i></label>
                 <Link to='/home'><li className='navbar_li'><h6 className='navbar_headers'>Calender</h6></li></Link>
-                <li className='navbar_li'><h6 className='navbar_headers'>Myself</h6></li>
+                {/* <li className='navbar_li'><h6 className='navbar_headers'>Myself</h6></li> */}
                 <li className='navbar_li'>
                     <h6 id='navbar_res2' className='navbar_headers'>Features</h6>
                     <input className='navbar_input' type="checkbox" id="showMega"/>
@@ -28,17 +28,17 @@ export default function Navbar() {
                         <div className="row">
                         <header className='nav_header'>All-In-One Organizer</header>
                         <ul className="mega-links">
-                            <li className='navbar_li'><h6 className='navbar_headers'>Social Media Dashboard</h6></li>
+                            <li className='navbar_li'><h6 className='navbar_headers'>Forum</h6></li>
                             <Link to='/clock'><li className='navbar_li'><h6 className='navbar_headers'>Timer</h6></li></Link>
-                            <li className='navbar_li'><h6 className='navbar_headers'>Challenges</h6></li>
-                            <li className='navbar_li'><h6 className='navbar_headers'>Motivation</h6></li>
+                            <Link to='/challenges'><li className='navbar_li'><h6 className='navbar_headers'>Challenges</h6></li></Link>
+                            <Link to='/chatbot'><li className='navbar_li'><h6 className='navbar_headers'>Chatbot Help</h6></li></Link>
                         </ul>
                         </div>
                         <div className="row">
                         <header className='nav_header'>Creative Customization</header>
                         <ul className="mega-links">
-                            <li className='navbar_li'><h6 className='navbar_headers'>Themes</h6></li>
-                            <li className='navbar_li'><h6 className='navbar_headers'>Music Library</h6></li>
+                            <Link to='/theme'><li className='navbar_li'><h6 className='navbar_headers'>Themes</h6></li></Link>
+                            <Link to='/musicplayer'><li className='navbar_li'><h6 className='navbar_headers'>Music Library</h6></li></Link>
                         </ul>
                         </div>
                     </div>
@@ -54,7 +54,6 @@ export default function Navbar() {
                     <Link to='/feedback'><li className='navbar_li'><h6 className='navbar_headers'>Feedback</h6></li></Link>
                     </ul>
                 </li>
-                <li className='navbar_li'><h6 className='navbar_headers'>Profile</h6></li>
                 </ul>
                 <label htmlFor="menu-btn" className="navbar_btn navbar_menu-btn"><i className="fas fa-bars"></i></label>
             </div>

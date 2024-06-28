@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../Styles/Feedback.css';
-import { Link } from 'react-router-dom';
+import Navbar from './Navbar';
 
 function Feedback() {
   const [sent, setSent] = useState(false);
@@ -10,8 +10,9 @@ function Feedback() {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className='feedback_form'>
-        <Link to='/home'><div id='back'><button className='feedback_button'>Back</button></div></Link>
         <div className={`wrapper centered ${sent ? 'sent' : ''}`}>
         <article className="letter">
             <div className="side">
@@ -37,6 +38,7 @@ function Feedback() {
         <p className="result-message centered">Thank you for your feedback!</p>
         </div>
     </div>
+    </>
   );
 }
 

@@ -7,7 +7,7 @@ export default function TitleFeatures() {
         <div className='flex flex-col lg:flex-row justify-between items-start gap-10'>
           <div className='lg:w-1/4'>
             <h3 className='text-4xl  text-primary font-bold lg:w-1/2 mb-3 '>Few Unique Features</h3>
-            <p className='text-base text-tertiary'>We provide personalized scheduling, social media tracking, customisable themes and a lot more for an optimized, productive day.</p>
+            <p className='text-base text-tertiary'>We provide personalized scheduling, connect with your fellow mates through discussion forum, customisable themes and a lot more for an optimized, productive day.</p>
           </div>
           
           {/* feature cards */}
@@ -16,19 +16,19 @@ export default function TitleFeatures() {
                 <div className='bg-[rgba(255,255,255,0.04)] rounded-[35px] h-96 shadow-3xl p-8 flex justify-center items-center hover:-translate-y-4 transition-all duration-300 cursor-pointer'>
                     <div>
                         <img src={featuresImg} alt="featuresImg" />
-                        <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5'>Convenient Study Schedule</h5>
+                        <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5'>Convenient Scheduling</h5>
                     </div>
                 </div>
                 <div className='bg-[rgba(255,255,255,0.04)] rounded-[35px] h-96 shadow-3xl p-8 flex justify-center items-center hover:-translate-y-4 transition-all duration-300 cursor-pointer md:mt-16'>
                     <div>
                         <img src={featuresImg} alt="featuresImg" />
-                        <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5'>Convenient Study Schedule</h5>
+                        <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5'>Productive Social Platform</h5>
                     </div>
                 </div>
                 <div className='bg-[rgba(255,255,255,0.04)] rounded-[35px] h-96 shadow-3xl p-8 flex justify-center items-center hover:-translate-y-4 transition-all duration-300 cursor-pointer'>
                     <div>
                         <img src={featuresImg} alt="featuresImg" />
-                        <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5'>Convenient Study Schedule</h5>
+                        <h5 className='text-2xl font-semibold text-primary px-5 text-center mt-5'>Customisable Themes</h5>
                     </div>
                 </div>
             </div>

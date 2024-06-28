@@ -3,6 +3,7 @@ import '../Styles/Challenges.css';
 import creativityImage from '../assets/creativity.jpg';
 import { db } from '../Firebase/Firebase.config';
 import { collection, doc, getDoc, setDoc, getDocs } from 'firebase/firestore';
+import { Link } from 'react-router-dom';
 
 const tasks = [
     'Tidy your workspace',
@@ -78,7 +79,7 @@ const CreativityChallenge = () => {
         <h1>30 Day Creativity Challenge</h1>
         <div className="buttons">
           <button onClick={resetChallenge}>Reset</button>
-          <button>Back</button>
+          <Link to='/challenges'><button>Back</button></Link>
         </div>
       </div>
       <div className="content">

@@ -1,8 +1,11 @@
 import React from 'react';
 import '../Styles/AboutUs.css';
+import Navbar from './Navbar';
 
 const AboutUs = () => {
   return (
+    <>
+    <Navbar/>
     <div className="aboutus_container">
       <h1 id='about_main' className='about_title'><strong>About Us</strong></h1>
       <p className='about_para'>Welcome to <strong>Schedule Savvy</strong>, your ultimate productivity companion designed to help you master your day and achieve your goals with ease. We believe there’s an untapped potential in each of us. <br /> <br /> We believe we’re all capable of living a life of balance, getting everything done without sacrificing peace of mind.We’re building the tools and services to help us all do more with ease and keep life under control.Productivity made easy. Balance made possible. Life under control.</p>
@@ -21,6 +24,7 @@ const AboutUs = () => {
       <h2 className='about_title'><strong>Get in Touch</strong></h2>
       <p className='about_para'>Ready to take your productivity to the next level? Join the <strong>Schedule Savvy</strong> community today and start achieving your goals with confidence.</p>
     </div>
+    </>
   );
 };
 
