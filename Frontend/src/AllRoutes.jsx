@@ -23,11 +23,11 @@ import Challenges from './Components/Challenges';
 function AllRoutes() {
   return (
       <Routes>
-        <Route path="/" element={<TitlePage />} />
+        <Route path="/" element={<Layout><TitlePage /></Layout>} />
         <Route path="/signup" element={<Layout><Signup/></Layout>} />
         <Route path="/forgetPassword" element={<ForgetPassword />} />
         <Route path="/feedback" element={<Feedback />} />
-        <Route path='/home' element={<Home/>}></Route>
+        <Route path='/home' element={<Layout><Home/></Layout>}></Route>
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/clock" element={<Clock />} />          
         <Route path="/stopwatch" element={<Stopwatch />} />

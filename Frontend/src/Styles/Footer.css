@@ -54,3 +54,8 @@
     text-align: center;
     margin-top: 10px;
 }
+
+#footer_logo{
+    height: 15vh;
+    width: 20vw;
+}
