@@ -17,7 +17,6 @@ export default function TitleAbout() {
           <p className='text-tertiary text-lg mb-7'>
             Our mission is to empower you with tools for efficient task planning and management. We aim to help you prioritize and track your tasks seamlessly, optimizing your productivity.
           </p>
-          <button className='btnPrimary'>Let's Go</button>
         </div>
       </div>
       <div className='h-10'></div>
@@ -32,7 +31,6 @@ export default function TitleAbout() {
           <p className='text-tertiary text-lg mb-7'>
             Connect, Share, and Grow: Join the Conversation in Our Social Platform!
           </p>
-          <button className='btnPrimary'>Let's Go</button>
         </div>
       </div>
     </div>

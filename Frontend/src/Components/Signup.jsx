@@ -6,7 +6,6 @@ import { useNavigate, Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth } from '../Firebase/Firebase.config';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 const Signup = () => {
@@ -15,7 +14,6 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
-    const [username, setUsername] = useState('');
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -26,7 +24,7 @@ const Signup = () => {
         e.preventDefault();
 
         // Check if all fields are filled
-        if (!username || !email || !password) {
+        if (!email || !password) {
             toast.error('Please fill in all the fields.');
             return;
         }
@@ -49,7 +47,6 @@ const Signup = () => {
             // Clear the fields
             setEmail('');
             setPassword('');
-            setUsername('');
 
             // Redirect to login page
             setIsSignUpMode(false);
@@ -88,14 +85,11 @@ const Signup = () => {
         const provider = new GoogleAuthProvider();
         try {
             const result = await signInWithPopup(auth, provider);
-            console.log(result);
             const isNewUser = result.additionalUserInfo?.isNewUser;
             if (isNewUser) {
-                toast.success('Thank you for signing up! A verification email has been sent.');
-                sendEmailVerification(result.user);
-            } else {
                 toast.success('Welcome to Schedule Savvy!');
             }
+            navigate('/home');
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -140,10 +134,6 @@ const Signup = () => {
 
                     <form className="sign-up-form" onSubmit={onSubmitSignup}>
                         <h2 className="title">Sign up</h2>
-                        <div className="input-field">
-                            <i className="fas fa-user" />
-                            <input className='signup_input' type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} required />
-                        </div>
                         <div className="input-field">
                             <i className="fas fa-envelope" />
                             <input className='signup_input' type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} required />
