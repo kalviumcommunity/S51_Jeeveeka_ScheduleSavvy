@@ -31,7 +31,7 @@ const Chatbot = () => {
     setError("");
 
     try {
-      const response = await fetch("http://localhost:3000/gemini", {
+      const response = await fetch("https://s51-jeeveeka-schedulesavvy.onrender.com/gemini", {
         method: "POST",
         body: JSON.stringify({ history: chatHistory, message: value }),
         headers: { "Content-Type": "application/json" },
