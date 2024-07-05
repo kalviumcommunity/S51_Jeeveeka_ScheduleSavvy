@@ -28,12 +28,12 @@ const CalendarComp = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/gettasks');
+      const response = await axios.get('https://s51-jeeveeka-schedulesavvy.onrender.com/gettasks');
       const validatedEvents = response.data.map(event => ({
         ...event,
         start: new Date(event.start),
         end: new Date(event.end),
-        title: event.title || 'Untitled Event', // Handle missing title gracefully
+        title: event.title || 'Untitled Event', 
       }));
       setEvents(validatedEvents);
       setLoading(false);
@@ -56,7 +56,7 @@ const CalendarComp = () => {
   const handleSelectedEvent = (event) => {
     setShowModal(true);
     setSelectEvent(event);
-    setEventTitle(event.title || ''); // Handle potential undefined title
+    setEventTitle(event.title || ''); 
     setStartTime(moment(event.start).format('YYYY-MM-DDTHH:mm'));
     setEndTime(moment(event.end).format('YYYY-MM-DDTHH:mm'));
   };
@@ -80,10 +80,10 @@ const CalendarComp = () => {
 
       try {
         if (selectEvent) {
-          const response = await axios.patch(`http://localhost:3000/updatetask/${selectEvent._id}`, eventPayload);
+          const response = await axios.patch(`https://s51-jeeveeka-schedulesavvy.onrender.com/updatetask/${selectEvent._id}`, eventPayload);
           setEvents(events.map(event => (event._id === selectEvent._id ? { ...response.data, start, end } : event)));
         } else {
-          const response = await axios.post('http://localhost:3000/posttask', eventPayload);
+          const response = await axios.post('https://s51-jeeveeka-schedulesavvy.onrender.com/posttask', eventPayload);
           setEvents([...events, { ...response.data, start, end }]);
         }
         setShowModal(false);
@@ -97,7 +97,7 @@ const CalendarComp = () => {
   const deleteEvent = async () => {
     if (selectEvent) {
       try {
-        await axios.delete(`http://localhost:3000/deletetask/${selectEvent._id}`);
+        await axios.delete(`https://s51-jeeveeka-schedulesavvy.onrender.com/deletetask/${selectEvent._id}`);
         setEvents(events.filter(event => event._id !== selectEvent._id));
         setShowModal(false);
         resetForm();
@@ -144,7 +144,7 @@ const CalendarComp = () => {
           events={events}
           startAccessor='start'
           endAccessor='end'
-          titleAccessor='title' // Ensure this matches the property name in each event object
+          titleAccessor='title' 
           className='calendar_component'
           selectable={true}
           onSelectEvent={handleSelectedEvent}

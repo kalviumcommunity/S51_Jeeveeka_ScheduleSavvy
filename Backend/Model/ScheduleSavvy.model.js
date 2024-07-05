@@ -4,7 +4,7 @@ const taskSchema = new mongoose.Schema({
   ID: {
     type: String,
     required: true,
-    unique: true, // Ensure each ID is unique
+    unique: true,
   },
   title: {
     type: String,

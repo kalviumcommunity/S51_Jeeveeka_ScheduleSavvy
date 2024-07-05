@@ -43,7 +43,7 @@ export default function Navbar() {
                   <div className="row">
                     <header className='nav_header'>All-In-One Organizer</header>
                     <ul className="mega-links">
-                      <li className='navbar_li'><h6 className='navbar_headers'>Forum</h6></li>
+                      <a href="https://66877c03db1bcce60caff1a9--phenomenal-daifuku-73eb99.netlify.app" target="_blank"><li className='navbar_li'><h6 className='navbar_headers'>Social Platform</h6></li></a>
                       <Link to='/clock'><li className='navbar_li'><h6 className='navbar_headers'>Timer</h6></li></Link>
                       <Link to='/challenges'><li className='navbar_li'><h6 className='navbar_headers'>Challenges</h6></li></Link>
                       <Link to='/chatbot'><li className='navbar_li'><h6 className='navbar_headers'>Chatbot Help</h6></li></Link>
