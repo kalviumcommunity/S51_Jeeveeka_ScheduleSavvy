@@ -10,10 +10,18 @@ ScheduleSavvy is a comprehensive productivity platform designed to help users or
 - Customizable Themes: Personalize your planner with a variety of themes, colors, and fonts.
 - Gamified Task Completion: Earn rewards, badges, and achievements as you complete tasks and reach milestones.
 - Social Platform: Stay connected with your friends pursuing your same goals and support each other
-- Collaborative Tools: Collaborate with teams, share tasks, and track progress together in real-time.
 - Habit Building: Build positive habits over time.
-- Time Tracking: Monitor your time spent on tasks and analyze your productivity patterns.
-- Cross-Platform Compatibility: Access ScheduleSavvy from any device, including web browsers, mobile apps, and desktop applications.
+- Pre-made Challenges: Challenges made by us to build up a healthy routine.
+- AI Chatbot / Customer support: Available services to help you plan your day and raise any queries.
+- Music Player: Listen to songs selected to improve your productivity.
+
+### Tech Stack
+
+- MongoDB, Express, React JS, Node JS
+- Firebase
+- Mantine-theme
+- Render, Netlify (For deployment)
+- Tailwind,CSS (For Styling)
 
 ### Contact
 

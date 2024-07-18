@@ -13,7 +13,6 @@ import Pomodoro from './Components/Pomodoro';
 import ContactUs from './Components/ContactUs';
 import CrispChat from './Components/Chat';
 import Themes from './Components/Themes';
-import Chatbot from './Components/Chatbot';
 import SelfCareChallenge from './Components/SelfcareChallenge';
 import CreativityChallenge from './Components/CreativityChallenge';
 import { Route, Routes } from 'react-router-dom';
@@ -36,7 +35,6 @@ function AllRoutes() {
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/chat" element={<CrispChat />} />
         <Route path="/theme" element={<Themes />} />
-        <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/selfcare" element={<SelfCareChallenge />} />
         <Route path="/creativity" element={<CreativityChallenge />} />
         <Route path='/musicplayer' element={<Music/>}></Route>

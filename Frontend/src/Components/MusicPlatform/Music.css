@@ -36,8 +36,9 @@
 }
 
 .music-Container{
-    width: 350px;
+    width: 40vw;
     padding: 35px 40px;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -50,6 +51,9 @@
     backdrop-filter: blur(15px);
     font-weight: 600;
     margin-top: 70px;
+    background-image: url('../../assets/music_background.jfif');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .musicPlayer{

@@ -46,14 +46,14 @@ export default function Navbar() {
                       <a href="https://66877c03db1bcce60caff1a9--phenomenal-daifuku-73eb99.netlify.app" target="_blank"><li className='navbar_li'><h6 className='navbar_headers'>Social Platform</h6></li></a>
                       <Link to='/clock'><li className='navbar_li'><h6 className='navbar_headers'>Timer</h6></li></Link>
                       <Link to='/challenges'><li className='navbar_li'><h6 className='navbar_headers'>Challenges</h6></li></Link>
-                      <Link to='/chatbot'><li className='navbar_li'><h6 className='navbar_headers'>Chatbot Help</h6></li></Link>
+                      <a href="https://chatbothelp.netlify.app/" target='_blank'><li className='navbar_li'><h6 className='navbar_headers'>Chatbot Help</h6></li></a>
                     </ul>
                   </div>
                   <div className="row">
                     <header className='nav_header'>Creative Customization</header>
                     <ul className="mega-links">
                       <Link to='/theme'><li className='navbar_li'><h6 className='navbar_headers'>Themes</h6></li></Link>
-                      <Link to='/musicplayer'><li className='navbar_li'><h6 className='navbar_headers'>Music Library</h6></li></Link>
+                      <Link to='/musicplayer'><li className='navbar_li'><h6 className='navbar_headers'>Music Player</h6></li></Link>
                     </ul>
                   </div>
                 </div>

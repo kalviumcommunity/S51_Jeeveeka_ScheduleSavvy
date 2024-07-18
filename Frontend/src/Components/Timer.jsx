@@ -2,34 +2,38 @@ import React, { useState, useEffect } from 'react';
 import '../Styles/Timer.css';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
+import Modal from './Modal'; // 
 
 export default function Timer() {
     const [timerRunning, setTimerRunning] = useState(false);
     const [timerDuration, setTimerDuration] = useState(0);
-    const [timerStarted, setTimerStarted] = useState(false); // New state variable
+    const [timerStarted, setTimerStarted] = useState(false);
+    const [showModal, setShowModal] = useState(false); // State to control modal visibility
 
     const startTimer = () => {
-        if (!timerStarted) { // Check if timer has not been started yet
-            const durationInput = prompt("Enter timer duration (in minutes):");
-            if (durationInput !== null) {
-                try {
-                    const durationInMinutes = parseInt(durationInput);
-                    if (!isNaN(durationInMinutes) && durationInMinutes > 0 && durationInMinutes <= 2000) {
-                        const remainingTime = timerDuration > 0 ? timerDuration : durationInMinutes * 60000;
-                        setTimerDuration(remainingTime);
-                        setTimerRunning(true);
-                        setTimerStarted(true); // Set timerStarted to true
-                    } else {
-                        alert("Invalid input. Please enter a valid duration in minutes (not exceeding 2000 minutes).");
-                    }
-                } catch (error) {
-                    alert("Error parsing input. Please enter a valid duration in minutes.");
-                }
-            }
+        if (!timerStarted) {
+            setShowModal(true); // Show the modal when the start button is clicked for the first time
         } else {
             setTimerRunning(true); // If timer has been started, resume it without asking for input
         }
-    };    
+    };
+
+    const handleSave = (durationInput) => {
+        try {
+            const durationInMinutes = parseInt(durationInput);
+            if (!isNaN(durationInMinutes) && durationInMinutes > 0 && durationInMinutes <= 2000) {
+                const remainingTime = timerDuration > 0 ? timerDuration : durationInMinutes * 60000;
+                setTimerDuration(remainingTime);
+                setTimerRunning(true);
+                setTimerStarted(true);
+                setShowModal(false); // Hide the modal after saving the input
+            } else {
+                alert("Invalid input. Please enter a valid duration in minutes (not exceeding 2000 minutes).");
+            }
+        } catch (error) {
+            alert("Error parsing input. Please enter a valid duration in minutes.");
+        }
+    };
 
     const stopTimer = () => {
         setTimerRunning(false);
@@ -38,7 +42,7 @@ export default function Timer() {
     const resetTimer = () => {
         setTimerRunning(false);
         setTimerDuration(0);
-        setTimerStarted(false); // Reset timerStarted when timer is reset
+        setTimerStarted(false);
     };
 
     useEffect(() => {
@@ -51,7 +55,6 @@ export default function Timer() {
             clearInterval(intervalId);
         }
 
-        // Cleanup function to clear the interval when component unmounts
         return () => clearInterval(intervalId);
     }, [timerRunning]);
 
@@ -114,6 +117,7 @@ export default function Timer() {
                     </div>
                 </div>
             </div>
+            <Modal show={showModal} onClose={() => setShowModal(false)} onSave={handleSave} />
         </>
     );
 }
