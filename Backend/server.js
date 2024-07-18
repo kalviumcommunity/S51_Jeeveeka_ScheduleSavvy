@@ -1,10 +1,8 @@
-// Load environment variables from .env file
 require('dotenv').config()
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { connectdb, isConnectedNow } = require('./Config/dbConn.js');
 const { getRouter, postRouter, deleteRouter, patchRouter } = require('./Routes/ScheduleSavvy.routes.js');
 
@@ -19,23 +17,6 @@ app.use('/', getRouter);
 app.use('/', postRouter);
 app.use('/', deleteRouter);
 app.use('/', patchRouter);
-
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEN_AI_KEY);
-
-app.post('/gemini', async (req, res) => {
-  const { history, message } = req.body;
-  const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-
-  const chat = model.startChat({
-    history: history,
-  });
-  const msg = message;
-
-  const result = await chat.sendMessage(msg);
-  const response = await result.response;
-  const text = response.text();
-  res.send(text);
-});
 
 app.get('/ping', (req, res) => {
   res.send('Hello,This is Jeeveeka');

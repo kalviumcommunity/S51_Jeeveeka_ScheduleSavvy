@@ -12,7 +12,7 @@ postRouter.use(express.json());
 patchRouter.use(express.json());
 deleteRouter.use(express.json());
 
-// Get all appointments
+// Get all tasks
 getRouter.get("/gettasks", async (req, res) => {
   try {
     const tasks = await ScheduleSavvy.find();
@@ -23,7 +23,7 @@ getRouter.get("/gettasks", async (req, res) => {
   }
 });
 
-// Create a new appointment
+// Create a new task
 postRouter.post("/posttask", async (req, res) => {
   try {
     const { ID, title, start, end } = req.body;
@@ -38,7 +38,7 @@ postRouter.post("/posttask", async (req, res) => {
   }
 });
 
-// Update an existing appointment
+// Update an existing task
 patchRouter.patch("/updatetask/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -58,7 +58,7 @@ patchRouter.patch("/updatetask/:id", async (req, res) => {
   }
 });
 
-// Delete an appointment by ID
+// Delete an task 
 deleteRouter.delete("/deletetask/:id", async (req, res) => {
   try {
     const { id } = req.params;

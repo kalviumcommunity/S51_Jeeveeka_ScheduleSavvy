@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [colorTheme, setColorTheme] = useState('theme_white');
+  const [colorTheme, setColorTheme] = useState('theme_purple');
 
   useEffect(() => {
     const currentThemeColor = localStorage.getItem('theme_color');

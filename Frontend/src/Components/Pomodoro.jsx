@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import '../Styles/Pomodoro.css'
+import React, { useState, useEffect, useRef } from 'react';
+import '../Styles/Pomodoro.css';
 import { Link } from 'react-router-dom';
 
 export default function Pomodoro() {
@@ -7,13 +7,21 @@ export default function Pomodoro() {
   const [breakMinutes, setBreakMinutes] = useState(5);
   const [seconds, setSeconds] = useState(0);
   const [timeOn, setTimeOn] = useState(false);
-  const [time, setTime] = useState(sessionMinutes * 60);
+  const [time, setTime] = useState(25 * 60);
   const [status, setStatus] = useState('session');
+  const alarmRef = useRef(null);
+
+  useEffect(() => {
+    setTime(sessionMinutes * 60);
+  }, [sessionMinutes]);
 
   useEffect(() => {
     const timer = setInterval(() => {
       if (timeOn && time > 0) {
         setTime(prevTime => prevTime - 1);
+      } else if (timeOn && time === 0) {
+        alarmRef.current.play();
+        switchMode();
       }
     }, 1000);
 
@@ -35,8 +43,7 @@ export default function Pomodoro() {
       setTime(breakMinutes * 60); // Set the time to break duration if switching to break mode
     }
   };
-  
-  
+
   const resetTimer = () => {
     setTime(status === 'session' ? sessionMinutes * 60 : breakMinutes * 60);
     setTimeOn(false);
@@ -86,10 +93,9 @@ export default function Pomodoro() {
         <div className="pomo_title">POMODORO CLOCK</div>
         <div className="pomo_status">{status}</div>
         <div className="pomo_timer">
-            {status === 'session' ? (sessionMinutes < 10 ? `0${sessionMinutes}` : sessionMinutes) : (breakMinutes < 10 ? `0${breakMinutes}` : breakMinutes)}:
-            {seconds < 10 ? `0${seconds}` : seconds}
+          {Math.floor(time / 60) < 10 ? `0${Math.floor(time / 60)}` : Math.floor(time / 60)}:
+          {seconds < 10 ? `0${seconds}` : seconds}
         </div>
-
         <button className="pomo_button" id="switch" onClick={switchMode}><i className="fa fa-exchange"></i></button>
         <button className="pomo_button" id="reset" onClick={resetTimer}><i className="fa fa-refresh"></i></button>
         <button className="pomo_button" id="toggle" onClick={toggleTimer}><i className={`fa ${timeOn ? 'fa-pause' : 'fa-play'}`}></i></button>
@@ -97,6 +103,7 @@ export default function Pomodoro() {
       <div className='pomo_container'>
         <Link to='/clock'><button className='pomo_back_button'>BACK</button></Link>
       </div>
+      <audio ref={alarmRef} src="/alarm.mp3"></audio>
     </>
   );
 }

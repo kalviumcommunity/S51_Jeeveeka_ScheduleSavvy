@@ -1,37 +1,46 @@
-.calendar_container{
-  height: 500px;  
-  margin-top: 13vh; 
+.calendar_container {
+  background-color: white; 
+  height: 90vh; 
+  margin-top: 10vh;  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.calendar_component{
-  margin: 50px;
+.calendar_component {
+  margin: 25px;
+  width: 100%; 
+  max-width: 1200px;
 }
 
-.calendar_modal_overlay{
+.calendar_modal_overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
 }
 
-.calendar_modal{
+.calendar_modal {
   background-color: white;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   color: black;
+  width: 400px; 
+  max-width: 90%; 
 }
 
-.calendar_modal h2{
+.calendar_modal h2 {
   margin-bottom: 10px;
 }
 
-.calendar_modal input{
+.calendar_modal input {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
@@ -39,12 +48,12 @@
   border-radius: 5px;
 }
 
-.calendar_modal_buttons{
+.calendar_modal_buttons {
   display: flex;
   justify-content: flex-end;
 }
 
-.calendar_modal_buttons button{
+.calendar_modal_buttons button {
   padding: 8px 16px;
   margin-left: 10px;
   border: none;
@@ -54,6 +63,6 @@
   cursor: pointer;
 }
 
-.calendar_modal_buttons button:hover{
+.calendar_modal_buttons button:hover {
   background-color: #010851;
 }
