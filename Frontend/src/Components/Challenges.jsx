@@ -8,7 +8,7 @@ const Challenges = () => {
     <>
     <Navbar/>
     <div className="challenges_container">
-      <h1 className='challenges_title'>Challenges</h1>
+    <h1 className='challenges_title'>Challenges</h1>
       <div className="box-container">
         <Link to='/selfcare'><div className="box">
           <h2 className='challenges_subtitle'>Selfcare Challenge</h2>
